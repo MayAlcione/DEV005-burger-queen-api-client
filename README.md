@@ -30,10 +30,6 @@ código para reusarlo (lo cuál es un gran valor per se), si no que adoptamos un
 **arquitectura**, una serie de **principios de diseño**, un **paradigma**, unas
 **abstracciones**, un **vocabulario**, una **comunidad**, etc.
 
-Como desarrolladora Front-end, estos kits de desarrollo pueden resultarte
-de gran ayuda para implementar rápidamente características de los proyectos en
-los que trabajes.
-
 ## 2. Resumen del proyecto
 
 Un pequeño restaurante de hamburguesas, que está creciendo, necesita un
