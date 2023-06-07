@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
+#logoQueen {
+  width: 80%;
+  margin: 0 10% -5% 10%;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  margin: 0 20%;
+  font-size: 30px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  text-align: start;
+}
+form label{
+  color: #F6C634;
+  font-weight: bolder;
+  font-size: 35px;
+  margin-top: -25px;
+  padding-left: 8px;
+}
+#correo, #contraseña {
+    height: 55px;
+    border-radius: 20px;
+    background: #E6E6E6;
+    padding: 6px 0 0 25px;
+}
+#correo::placeholder, #contraseña::placeholder{
+  font-size: 30px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+#iniciar{
+  background: #F6C634;
+  height: 70px;
+  border-radius: 20px;
+  font-size: 40px;
+  font-weight: bolder;
+  margin-top: -5px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  padding-bottom : 5px;
+}
+
+#comidaLogin{
+  width: 70%;
+  margin: 0 15%;
+  position: absolute;
+  top: 785px;
+}
+footer{
+  background: #F6C634;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  left: 0px;
+  top: 1045px;
+  padding-top: 20px;
+}
+
