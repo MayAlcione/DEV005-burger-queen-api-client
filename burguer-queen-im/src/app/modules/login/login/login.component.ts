@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; // Core module
 
-@Component({
+@Component({ //decorador
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
