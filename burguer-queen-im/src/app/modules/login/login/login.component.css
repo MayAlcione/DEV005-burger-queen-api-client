@@ -14,7 +14,7 @@ form{
   text-align: start;
 }
 form label{
-  color: #F6C634;
+  color: #DCB33A;
   font-weight: bolder;
   font-size: 35px;
   margin-top: -25px;
@@ -25,13 +25,14 @@ form label{
     border-radius: 20px;
     background: #E6E6E6;
     padding: 6px 0 0 25px;
+    font-size: 30px;
 }
 #correo::placeholder, #contraseña::placeholder{
   font-size: 30px;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 #iniciar{
-  background: #F6C634;
+  background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
   height: 70px;
   border-radius: 20px;
   font-size: 40px;
@@ -47,4 +48,7 @@ form label{
   position: absolute;
   top: 785px;
 }
-
+div{
+  color: rgb(248, 37, 37);
+  margin: 10px 0 40px 0;
+}

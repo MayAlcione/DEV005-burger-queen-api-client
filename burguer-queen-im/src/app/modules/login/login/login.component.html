@@ -1,15 +1,20 @@
 
-<!--Logo, formulario, imagen, footer-->
+<!--Logo, formulario, imagen-->
 <img id="logoQueen" src= "../../../assets/BurgerQueen.png" alt="Logo de BurguerQueen con corona"/>
 
-<form>
-    <label for="correo">Correo</label>
-	<input type="text" id="correo" name="correo eletronico" placeholder="Correo eletronico">
+<form [formGroup] = "loginForm" (ngSubmit)="save()">
+  <label for="correo">Correo</label>
+	<input type="text" id="correo" name="correo eletronico" placeholder="ejemplo@ejemplo.com" formControlName="email">
 	<br><br>
-    <label for="contraseña">Contraseña</label>
-	<input type="number" id="contraseña" name="contraseña" placeholder="Contraseña" >
-	<br><br>
+  <label for="contraseña">Contraseña</label>
+	<input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" formControlName="password">
+	<div class="errorCorreo" *ngIf="f.email.invalid">Correo y contraseña son obligatorios</div>
 	<button type="submit" id="iniciar">Iniciar sesión</button>
 </form>
 
+<div >{{ preview }}</div>
 <img id="comidaLogin" src="../../../assets/comidaRapida.png" alt="papas fritas, gaseosa, aros de cebolla y hamburguesa">
+<!-- <div *ngIf="users">{{ users }}</div> -->
+<!-- (ngSubmit)="onLogin(loginForm.value)" -->
+
+<!-- <button (click)="updateName()">Update Name</button>   Evento al botón-->
