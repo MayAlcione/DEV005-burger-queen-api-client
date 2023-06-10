@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'; // Core module
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-// import { LoginService } from 'src/app/service/login.service';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({ //decorador
   selector: 'app-login',
@@ -10,8 +10,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
 
-  constructor() {}
-
   loginForm = new FormGroup({
     email : new FormControl('', Validators.required),
     password : new FormControl('', Validators.required)
@@ -20,22 +18,19 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
   preview: string = '';
 
-  ngOnInit(): void{}
-
   save() {
     if(this.loginForm.valid){
       this.preview = JSON.stringify(this.loginForm.value);
     }
   }
-  // users: any;
-  // constructor(public loginService: LoginService) {}
+  constructor(public loginService: LoginService) {}
 
-  // ngOnInit() {
-  //   this.loginService.getUsers().subscribe((data) => {
-  //     this.users = data;
-  //     console.log('hhhh', this.users)
-  //   });;
-  // }
+  ngOnInit() {
+    this.loginService.getAuth().subscribe((data) => {
+      console.log(data);
+
+    });;
+  }
 }
 // export class LoginComponent {
 

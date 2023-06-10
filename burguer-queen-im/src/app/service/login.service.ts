@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+// import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 // import { authUser } from '../shared/interfaces/auth';
 
@@ -11,7 +11,10 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<any>{
-    return this.http.get(`${environment.apiURL}/users`)
+  getAuth(): Observable<any>{
+    return this.http.post('http://localhost:8080/login', {
+      "email": "anita.borg@systers.xyz",
+      "password": "123456"
+    })
   }
 }
