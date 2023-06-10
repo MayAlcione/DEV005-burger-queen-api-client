@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 //import { LoginComponent } from './views/login/login.component';
 import { FooterComponent } from './shared/components/footer/footer.component';// <---- Importar FormsModule
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './shared/components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
