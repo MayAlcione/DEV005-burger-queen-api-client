@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //import { LoginComponent } from './views/login/login.component';
 import { FooterComponent } from './shared/components/footer/footer.component';// <---- Importar FormsModule
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,6 +13,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';//
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
