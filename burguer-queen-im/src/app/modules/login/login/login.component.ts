@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
       this.preview = JSON.stringify(this.loginForm.value);
     }
   }
+
   constructor(public loginService: LoginService) {}
 
   ngOnInit() {
@@ -32,6 +33,3 @@ export class LoginComponent implements OnInit {
     });;
   }
 }
-// export class LoginComponent {
-
-// }
