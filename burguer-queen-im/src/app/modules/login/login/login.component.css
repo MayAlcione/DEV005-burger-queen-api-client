@@ -55,7 +55,7 @@ form label{
   border-radius: 20px;
   font-size: 40px;
   font-weight: bolder;
-  margin-top: -5px;
+  margin-top: 5px;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   padding-bottom : 5px;
 }
@@ -71,9 +71,9 @@ form label{
 div{
   color: rgb(248, 37, 37);
   position: absolute;
-  top:515px;
+  top:415px;
   left: 22%;
 }
 .errorContraseña{
-  top:680px;
+  top:582px;
 }
