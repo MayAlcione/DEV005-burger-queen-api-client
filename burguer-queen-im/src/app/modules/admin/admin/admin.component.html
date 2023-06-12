@@ -1,1 +1,51 @@
-<p>admin works!</p>
+<!-- <nav> 
+    <a href="" class="btn-equipo">Equipo</a>
+    <a href="" class="btn-productos">Productos</a>
+   </nav> -->
+   <div class="container">
+    <h2>Lista de personal</h2>
+    <button class="btn-agregar" (click)="abrirModal()">+</button>
+  </div>
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <div class="form-box">
+        <form [formGroup]="adminForm">
+            <span class="close" (click)="cerrarModal()">&times;</span>
+        <p>Miembro nuevo del equipo</p>
+         <label for="correo">Correo</label>
+         <input type="text" id="correo" placeholder="ejemplo@ejemplo.com" formControlName="correo">
+         <br><br>
+         <label for="contraseña">Contraseña</label>
+         <input type="text" id="contraseña" placeholder="ejemplo" formControlName="contraseña">
+         <br><br>
+         <label for="rol">Rol</label>
+         <input type="text" id="rol" placeholder="ejemplo" formControlName="rol">
+         <br><br>
+         <button type="submit">Agregar</button>
+         <button type="button" (click)="cerrarModal()">Cancelar</button>
+        </form>
+        </div>
+   </div>
+</div> 
+<ul>
+    <li *ngFor="let usuario">
+      ID: {{ usuario.id }} - Email: {{ usuario.email }} - Rol: {{ usuario.role }}
+    </li>
+  </ul>
+  
+ <!--  <div class="form-box">
+   <form [formGroup]="adminForm">
+    <label for="correo">correo</label>
+    <input type="text" id="correo" formControlName="correo">
+    <br><br>
+    <label for="contraseña">contraseña</label>
+    <input type="correo" id="contraseña" formControlName="contraseña">
+    <br><br>
+    <label for="rol">rol</label>
+    <input type="contraseña" id="rol" formControlName="rol">
+    <br><br>
+    <button type="button" (click)="eliminar()">Eliminar</button>
+    <button type="button" (click)="editar()">Editar</button>
+  </form>
+</div>-->
+  

@@ -1,3 +1,107 @@
-p{
-  color: white;
+.container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  height: 10vh; /* Establece la altura del contenedor para ocupar todo el viewport */
 }
+
+h2 {
+  color: #DCB33A;
+  font-weight: bolder;
+  margin-top: 35px;
+  margin-left: 100px;
+  font-size: 40px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+p {
+  color: #010101;
+  font-weight: bolder;
+  margin-top: 10px;
+  font-size: 25px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+.btn-agregar {
+  background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
+  font-size: 30px;
+  border-radius: 15px;
+  border: none;
+  width: 50px;
+  height: 50px;
+  margin-left: 150px; /* Espacio entre el h2 y el botón */
+}
+
+.close:hover {
+  color: #f4f4f4;
+}
+
+.form-box {
+  display: flex;
+  width: 500px;
+  background-color: #f4f4f4;
+  border: 3px solid #DCB33A;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 150px;
+  margin-bottom: 20px;
+}
+
+.form-box label {
+  font-weight: bold;
+  color: #010101;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 20px;
+}
+
+.form-box input {
+  width: 90%;
+  background-color: #f4f4f4;
+  padding: 1% 20%;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #7f7e7e;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  color: #010101;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#correo::placeholder, 
+#contraseña::placeholder,
+#rol::placeholder{
+  background-color: #f4f4f4;
+  font-size: 20px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+.form-box button {
+  background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
+  font-weight: bolder;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+.form-box button:hover {
+  background-color: #f4f4f4;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
