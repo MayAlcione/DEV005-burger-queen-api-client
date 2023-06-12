@@ -1,18 +1,23 @@
-
 <!--Logo, formulario, imagen-->
-<img id="logoQueen" src= "../../../assets/BurgerQueen.png" alt="Logo de BurguerQueen con corona"/>
+<img id="logoQueen" src="../../../assets/BurgerQueen.png" alt="Logo de BurguerQueen con corona" />
 
-<form [formGroup] = "loginForm" (ngSubmit)="save()">
-  <label for="correo">Correo</label>
-	<input type="text" id="correo" name="correo eletronico" placeholder="ejemplo@ejemplo.com" formControlName="email">
-	<br><br>
-  <label for="contraseña">Contraseña</label>
-	<input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" formControlName="password">
-	<div class="errorCorreo" *ngIf="f.email.invalid">Correo y contraseña son obligatorios</div>
-	<button type="submit" id="iniciar">Iniciar sesión</button>
+<form [formGroup]="loginForm" (ngSubmit)="saveAuth()">
+	<label for="correo">Correo</label>
+	<input type="email" id="correo" name="correo eletronico" placeholder="ejemplo@ejemplo.com" formControlName="email">
+	<div class="errorCorreo" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Ingresa un
+		correo válido</div>
+	<label for="contraseña">Contraseña</label>
+	<input [type]="showPassword?'text':'password'" id="contraseña" name="contraseña" placeholder="Contraseña" formControlName="password">
+  <button class="icon">
+    <span class="material-symbols-outlined" *ngIf="!showPassword" (click)="toggleShow()">visibility</span>
+    <span class="material-symbols-outlined" *ngIf="showPassword" (click)="toggleShow()">visibility_off</span>
+  </button>
+	<div class="errorContraseña" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+		Ingresa una contraseña válida</div>
+	<button type="submit" id="iniciar" [disabled]="loginForm.invalid"
+		[ngClass]="{'disabledBtn': loginForm.invalid}">Iniciar sesión</button>
 </form>
 
-<div >{{ preview }}</div>
 <img id="comidaLogin" src="../../../assets/comidaRapida.png" alt="papas fritas, gaseosa, aros de cebolla y hamburguesa">
 <!-- <div *ngIf="users">{{ users }}</div> -->
 <!-- (ngSubmit)="onLogin(loginForm.value)" -->

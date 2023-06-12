@@ -21,15 +21,33 @@ form label{
   padding-left: 8px;
 }
 #correo, #contraseña {
-    height: 55px;
-    border-radius: 20px;
-    background: #E6E6E6;
-    padding: 6px 0 0 25px;
-    font-size: 30px;
+  height: 55px;
+  border-radius: 20px;
+  background: #E6E6E6;
+  padding: 6px 0 0 25px;
+  font-size: 30px;
+  margin-bottom: 80px;
+  position: relative;
 }
 #correo::placeholder, #contraseña::placeholder{
   font-size: 30px;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+.icon{
+  height: 55px;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  background-color: transparent;
+  position: absolute;
+  right: 21%;
+  margin-top: 5%;
+  padding-top: 3px;
+  padding-right: 15px;
+}
+.material-symbols-outlined{
+  color: #464646;
+  font-size: 50px;
+  font-weight: bold;
 }
 #iniciar{
   background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
@@ -41,7 +59,9 @@ form label{
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   padding-bottom : 5px;
 }
-
+.disabledBtn::before, .disabledBtn::after{
+  content: '  🔒︎  ';
+}
 #comidaLogin{
   width: 70%;
   margin: 0 15%;
@@ -50,5 +70,10 @@ form label{
 }
 div{
   color: rgb(248, 37, 37);
-  margin: 10px 0 40px 0;
+  position: absolute;
+  top:515px;
+  left: 22%;
+}
+.errorContraseña{
+  top:680px;
 }

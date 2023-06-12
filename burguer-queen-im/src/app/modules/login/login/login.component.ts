@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'; // Core module
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({ //decorador
@@ -10,26 +10,33 @@ import { LoginService } from 'src/app/service/login.service';
 
 export class LoginComponent implements OnInit {
 
-  loginForm = new FormGroup({
-    email : new FormControl('', Validators.required),
-    password : new FormControl('', Validators.required)
+  constructor(
+    public loginService: LoginService,
+    private fb: FormBuilder
+    ) {}
+// Formulario reactivo
+  loginForm = this.fb.group({
+    email : ['', [Validators.required, Validators.email]],
+    password : ['', [Validators.required]]
   });
 
-  get f() { return this.loginForm.controls; }
-  preview: string = '';
+  // get f() { return this.loginForm.controls; }
 
-  save() {
+  saveAuth() {
     if(this.loginForm.valid){
-      this.preview = JSON.stringify(this.loginForm.value);
+      console.log('soy un', this.loginForm.value);
     }
   }
-
-  constructor(public loginService: LoginService) {}
-
+// Petición a la Api para Auth
   ngOnInit() {
     this.loginService.getAuth().subscribe((data) => {
       console.log(data);
-
     });;
+  }
+
+//Mostrar u ocultar contraseña
+  showPassword = false;
+  toggleShow() {
+    this.showPassword = !this.showPassword;
   }
 }
