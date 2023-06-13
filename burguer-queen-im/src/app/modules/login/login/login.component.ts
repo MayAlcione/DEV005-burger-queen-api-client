@@ -20,18 +20,15 @@ export class LoginComponent implements OnInit {
     password : ['', [Validators.required]]
   });
 
-  // get f() { return this.loginForm.controls; }
-
   saveAuth() {
     if(this.loginForm.valid){
-      console.log('soy un', this.loginForm.value);
+      this.loginService.getAuth(this.loginForm.value).subscribe((data) => {
+        console.log(data);
+      });;
     }
   }
 // Petición a la Api para Auth
   ngOnInit() {
-    this.loginService.getAuth().subscribe((data) => {
-      console.log(data);
-    });;
   }
 
 //Mostrar u ocultar contraseña

@@ -11,10 +11,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  getAuth(): Observable<any>{
-    return this.http.post('http://localhost:8080/login', {
-      "email": "anita.borg@systers.xyz",
-      "password": "123456"
-    })
+  getAuth(body:{}): Observable<any>{
+    return this.http.post('http://localhost:8080/login', body)
   }
 }
