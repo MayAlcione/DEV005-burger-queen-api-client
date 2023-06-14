@@ -1,4 +1,10 @@
 <div class="navWaiter">
-  <a href="#">Menú</a>
-  <a href="#">Pedidos</a>
+  <a class="navWaiterInactive"
+    [ngClass]="{'navWaiterActive':router.url !== '/waiter/order'}"
+    [routerLink]="['/waiter']"
+  >Menú</a>
+  <a class="navWaiterInactive"
+    [ngClass]="{'navWaiterActive':router.url === '/waiter/order'}"
+    [routerLink]="['/waiter/order']"
+  >Pedidos</a>
 </div>

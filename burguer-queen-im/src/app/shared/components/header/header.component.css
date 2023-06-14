@@ -3,6 +3,17 @@
   display: flex;
   margin-top: -10px;
 }
+.logout{
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 25px;
+  top: 15px;
+}
+.logout img{
+  width: 60px;
+  height: 60px;
+}
 span{
   position: absolute;
   width: 100%;

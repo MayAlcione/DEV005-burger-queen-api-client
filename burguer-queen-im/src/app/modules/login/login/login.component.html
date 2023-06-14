@@ -3,19 +3,38 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="saveAuth()">
 	<label for="correo">Correo</label>
-	<input type="email" id="correo" name="correo eletronico" placeholder="ejemplo@ejemplo.com" formControlName="email">
-	<div class="errorCorreo" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Ingresa un
-		correo válido</div>
+	<input type="email"
+    id="correo"
+    name="correo eletronico"
+    placeholder="ejemplo@ejemplo.com"
+    (click)="showErrEmail=false"
+    formControlName="email">
+	<div class="messaggeError errorCorreo"
+    *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+    Ingresa un correo válido
+  </div>
+  <div class="messaggeError" *ngIf="showErrEmail">{{messageErrorEmail}}</div>
 	<label for="contraseña">Contraseña</label>
-	<input [type]="showPassword?'text':'password'" id="contraseña" name="contraseña" placeholder="Contraseña" formControlName="password">
+	<input
+    [type]="showPassword?'text':'password'"
+    id="contraseña"
+    name="contraseña"
+    placeholder="Contraseña"
+    (click)="showErrPassword=false"
+    formControlName="password">
   <button class="icon">
     <span class="material-symbols-outlined" *ngIf="!showPassword" (click)="toggleShow()">visibility</span>
     <span class="material-symbols-outlined" *ngIf="showPassword" (click)="toggleShow()">visibility_off</span>
   </button>
-	<div class="errorContraseña" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-		Ingresa una contraseña válida</div>
-	<button type="submit" id="iniciar" [disabled]="loginForm.invalid"
-		[ngClass]="{'disabledBtn': loginForm.invalid}">Iniciar sesión</button>
+	<div class="messaggeError errorContraseña"
+    *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+		Contraseña mínimo 5 caracteres
+  </div>
+  <div class="messaggeError errorContraseña" *ngIf="showErrPassword">{{messageErrorPassword}}</div>
+	<button type="submit" id="iniciar"
+    [disabled]="loginForm.invalid"
+		[ngClass]="{'disabledBtn': loginForm.invalid}">Iniciar sesión
+  </button>
 </form>
 
 <img id="comidaLogin" src="../../../assets/comidaRapida.png" alt="papas fritas, gaseosa, aros de cebolla y hamburguesa">

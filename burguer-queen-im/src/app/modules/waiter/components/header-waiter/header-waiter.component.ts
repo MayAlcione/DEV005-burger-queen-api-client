@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-waiter',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-waiter.component.css']
 })
 export class HeaderWaiterComponent {
-
+  constructor(
+    public router : Router,
+  ){}
 }

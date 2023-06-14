@@ -1,20 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
 
-.navOptionMenu{
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
-}
-.navOptionMenuInactive{
+span{
+  position: absolute;
+  width: 94px;
+  height: 52px;
+  left: 552px;
+  top: 18px;
   font-family: 'IBM Plex Sans Condensed';
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 40px;
   line-height: 52px;
-  text-decoration:none;
-  color: #9E9E9E;
-  margin: 0 25px;
-}
-.navOptionMenuActive{
   color: #DCB33A;
 }

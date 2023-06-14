@@ -14,16 +14,16 @@
   </div>
   <hr>
   <div class="boxOrderCenter">
-    <button> - </button>
-    <span class="number numberCenter"> 1 </span>
-    <button> + </button>
+    <button (click)="subtract()"> - </button>
+    <span class="number numberCenter" > {{numberCounter}} </span>
+    <button (click)="add()"> + </button>
     <span class="food">SANDIWCH DE  JAMON Y QUESO</span>
     <span class="number numberPrice"> $ 5 </span>
   </div>
   <div class="boxOrderCenter">
-    <button> - </button>
-    <span class="number numberCenter"> 1 </span>
-    <button> + </button>
+    <button (click)="subtract()"> - </button>
+    <span class="number numberCenter"> {{numberCounter1}} </span>
+    <button (click)="add()"> + </button>
     <span class="food">HAMBURGUESA DOBLE</span>
     <span class="number numberPrice"> $ 15 </span>
   </div>
