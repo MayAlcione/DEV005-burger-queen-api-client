@@ -8,6 +8,8 @@ import { AdminService } from 'src/app/service/admin.service';
 import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
 import { MemberModalComponent } from './components/member-modal/member-modal.component';
 import { MembersComponent } from './components/members/members.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductsModalComponent } from './components/products-modal/products-modal.component';
 
 import { AdminRoutingModule } from './admin-routing.module';
 
@@ -16,7 +18,9 @@ import { AdminRoutingModule } from './admin-routing.module';
     AdminComponent,
     HeaderAdminComponent,
     MemberModalComponent,
-    MembersComponent
+    MembersComponent,
+    ProductsComponent,
+    ProductsModalComponent
   ],
   providers: [AdminService],
   imports: [

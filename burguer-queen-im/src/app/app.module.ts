@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';// <---- Importar FormsModule
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { ProductsModalComponent } from './products-modal/products-modal.component';
+
 
 
 @NgModule({
@@ -12,6 +14,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
     AppComponent,
     FooterComponent,
     HeaderComponent,
+    ProductsModalComponent,
+   
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Lista de produtos</h2>
+    <button class="btn-agregar" (click)="openModal()">+</button>
+  </div>
+  
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <div class="form-box">
+        <form [formGroup]="adminForm">
+          <span class="close" (click)="closeModal()">&times;</span>
+          <p>Producto nuevo</p>
+  
+          <label for="name">Producto</label>
+          <input type="text" id="name" placeholder="ejemplo" formControlName="name">
+          <br>
+  
+          <label for="price">Precio</label>
+          <input type="text" id="price" placeholder="ejemplo" formControlName="price">
+          <br>
+  
+          <label for="image">Imagen</label>
+          <input type="text" id="rol" placeholder="ejemplo" formControlName="image">
+          <br>
+
+          <label for="type">Tipo</label>
+          <input type="text" id="type" placeholder="ejemplo" formControlName="type">
+          <br>
+          <button type="submit">Agregar</button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
