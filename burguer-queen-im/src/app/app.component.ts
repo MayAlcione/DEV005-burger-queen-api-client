@@ -10,8 +10,6 @@ export class AppComponent {
   title = 'burguer-queen-im';
   constructor(
     public router : Router,
-  ){
-
-  }
+  ){}
 
 }

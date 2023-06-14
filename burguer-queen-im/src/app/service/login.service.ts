@@ -9,7 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    ) {}
 
   getAuth(body:{}): Observable<any>{
     return this.http.post('http://localhost:8080/login', body)
