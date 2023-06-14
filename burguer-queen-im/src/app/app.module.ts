@@ -8,7 +8,6 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductsModalComponent } from './products-modal/products-modal.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

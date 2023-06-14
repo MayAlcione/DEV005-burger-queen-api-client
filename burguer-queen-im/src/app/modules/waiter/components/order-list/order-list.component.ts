@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class OrderListComponent {
 
+  numberCounter:number = 7;
+  numberCounter1:number = 3;
+
+  subtract(){
+    return this.numberCounter--;
+  }
+  add(){
+    return this.numberCounter++;
+  }
+
+
 }

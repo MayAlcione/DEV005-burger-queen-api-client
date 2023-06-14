@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
+
+.allOrders{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+/* Pedidos listos */
+.orderList{
+  box-shadow: inset 0 0 0 5px #9A690C;
+}
+.orderListHeader{
+  background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
+}
+/* . */
+.oneOrder{
+  width: 90%;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  background: rgba(0, 0, 0, 0.25);
+}
+.headerOrderBox{
+  font-size: 30px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.nameUserOrder{
+  display: flex;
+  align-items: center;
+}
+.nameUserOrder span{
+  font-weight: bolder;
+  font-size: 40px;
+  margin-right: 15px;
+}
+.nameUserOrder input{
+  height: 45px;
+  width: 45px;
+  accent-color: #d6b53e;
+}
+.listOrderBox{
+  margin: 40px;
+}
+.oneListOrder{
+  color: #f4f4f4;
+  font-size: 28px;
+  font-weight: 400;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  display: flex;
+  margin: 20px 0;
+}
+.amountOrder{
+  flex: 1;
+  font-size: 30px;
+}
+.foodOrder{
+  flex: 8;
+}
+/* Pedidos Pendientes */
+.orderPending{
+  box-shadow: inset 0 0 0 5px #818086;
+}
+.orderPendingHeader{
+  background: linear-gradient(180deg, #D3CECE 0%, #818086 100%);
+}
+.noCheck{
+  pointer-events: none;
+}
+/* . */
+/* Pedidos Entregados */
+.orderDelivered{
+  box-shadow: inset 0 0 0 5px #535252;
+}
+.orderDeliveredHeader{
+  background: #535252;
+}
+/* . */

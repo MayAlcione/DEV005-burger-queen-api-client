@@ -4,10 +4,10 @@
   position: absolute;
   width: 94px;
   height: 52px;
-  left: 370px;
+  right: 350px;
   top: 18px;
 }
-.navWaiter a{
+.navWaiterInactive{
   font-family: 'IBM Plex Sans Condensed';
   font-style: normal;
   font-weight: 700;
@@ -16,4 +16,7 @@
   text-decoration:none;
   color: #9E9E9E;
   margin: 0 25px;
+}
+.navWaiterActive{
+  color: #DCB33A;
 }

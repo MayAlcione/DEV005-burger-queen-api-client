@@ -40,13 +40,13 @@ form label{
   background-color: transparent;
   position: absolute;
   right: 21%;
-  margin-top: 5%;
+  margin-top: 4%;
   padding-top: 3px;
   padding-right: 15px;
 }
 .material-symbols-outlined{
-  color: #464646;
-  font-size: 50px;
+  color: #be9b32;
+  font-size: 40px;
   font-weight: bold;
 }
 #iniciar{
@@ -68,7 +68,7 @@ form label{
   position: absolute;
   top: 785px;
 }
-div{
+.messaggeError{
   color: rgb(248, 37, 37);
   position: absolute;
   top:415px;

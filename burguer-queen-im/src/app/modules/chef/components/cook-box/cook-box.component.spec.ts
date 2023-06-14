@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WaiterComponent } from './waiter.component';
+import { CookBoxComponent } from './cook-box.component';
 
-describe('WaiterComponent', () => {
-  let component: WaiterComponent;
-  let fixture: ComponentFixture<WaiterComponent>;
+describe('CookBoxComponent', () => {
+  let component: CookBoxComponent;
+  let fixture: ComponentFixture<CookBoxComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WaiterComponent]
+      declarations: [CookBoxComponent]
     });
-    fixture = TestBed.createComponent(WaiterComponent);
+    fixture = TestBed.createComponent(CookBoxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
