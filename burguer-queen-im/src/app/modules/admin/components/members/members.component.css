@@ -1,8 +1,25 @@
-  h2 {
-    color: #DCB33A;
-    font-weight: bolder;
-    font-size: 40px;
-    font-family: 'IBM Plex Sans Condensed', sans-serif;
-    margin-top: 30px;
-    margin-left: 130px; 
+ 
+ .user-post-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
   }
+  
+  .user-post {
+    background-color: transparent;
+    border: 4px solid #7f7e7e;
+    border-radius: 20px;
+    padding: 10px;
+    width: 400px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .user-post p {
+    color: #7f7e7e;
+    font-size: 20px;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    margin: 5px 0;
+  }
+  

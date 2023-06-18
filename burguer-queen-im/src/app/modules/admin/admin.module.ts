@@ -20,7 +20,7 @@ import { AdminRoutingModule } from './admin-routing.module';
     MemberModalComponent,
     MembersComponent,
     ProductsComponent,
-    ProductsModalComponent
+    ProductsModalComponent,
   ],
   providers: [AdminService],
   imports: [
