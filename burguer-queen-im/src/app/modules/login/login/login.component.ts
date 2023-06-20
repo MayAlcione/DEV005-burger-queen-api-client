@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'; // Core module
 import { Validators, FormBuilder } from '@angular/forms';
 import { LoginService } from 'src/app/service/login.service';
+import { Router } from '@angular/router';
 
 @Component({ //decorador
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(
     public loginService: LoginService,
     private fb: FormBuilder,
+    public router: Router,
     ) {}
 
 // Formulario reactivo
@@ -32,11 +34,24 @@ showErrPassword:boolean=false;
 //Función que se activa al dar click al botón 'Iniciar sesión'
   saveAuth() {
   // Petición a la Api para Auth
+  console.log('entre a saveAuth');
     if(this.loginForm.valid){
+      console.log('entre a saveAuth-valid');
       this.loginService.getAuth(this.loginForm.value)
       .subscribe({
-        next: (data) => {console.log(data)},
+        next: (data) => {
+          console.log('data')
+          //localStorage
+            localStorage.setItem('Token', data.accessToken)
+            console.log(data.accessToken);
+
+          //Navegación a las vistas según la credencial
+          if(data.user.role === 'admin'){
+            this.router.navigate(['/admin'])
+          }
+        },
         error: (err) => {
+          console.log('Errorr')
           if(err.error==='Incorrect password'){
             this.messageErrorPassword='Contraseña incorrecta'
             this.showErrPassword=true;
@@ -50,7 +65,7 @@ showErrPassword:boolean=false;
     }
   }
 
-//Función que ejecuta al cargar la página
+//Función que se ejecuta al cargar la página
   ngOnInit() {
   }
 
@@ -59,4 +74,6 @@ showErrPassword:boolean=false;
   toggleShow() {
     this.showPassword = !this.showPassword;
   }
+
+
 }

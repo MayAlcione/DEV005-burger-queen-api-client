@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MemberModalComponent } from './member-modal.component';
 
 describe('MemberModalComponent', () => {
@@ -8,7 +8,8 @@ describe('MemberModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MemberModalComponent]
+      declarations: [MemberModalComponent],
+      imports: [HttpClientTestingModule],
     });
     fixture = TestBed.createComponent(MemberModalComponent);
     component = fixture.componentInstance;

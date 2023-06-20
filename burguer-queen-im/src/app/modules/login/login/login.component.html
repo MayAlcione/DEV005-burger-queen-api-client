@@ -2,22 +2,22 @@
 <img id="logoQueen" src="../../../assets/BurgerQueen.png" alt="Logo de BurguerQueen con corona" />
 
 <form [formGroup]="loginForm" (ngSubmit)="saveAuth()">
-	<label for="correo">Correo</label>
+	<label for="formEmail">Correo</label>
 	<input type="email"
-    id="correo"
+    id="formEmail"
     name="correo eletronico"
     placeholder="ejemplo@ejemplo.com"
     (click)="showErrEmail=false"
     formControlName="email">
-	<div class="messaggeError errorCorreo"
+	<div class="messaggeError"
     *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
     Ingresa un correo válido
   </div>
   <div class="messaggeError" *ngIf="showErrEmail">{{messageErrorEmail}}</div>
-	<label for="contraseña">Contraseña</label>
+	<label for="formPassword">Contraseña</label>
 	<input
     [type]="showPassword?'text':'password'"
-    id="contraseña"
+    id="formPassword"
     name="contraseña"
     placeholder="Contraseña"
     (click)="showErrPassword=false"
@@ -26,19 +26,15 @@
     <span class="material-symbols-outlined" *ngIf="!showPassword" (click)="toggleShow()">visibility</span>
     <span class="material-symbols-outlined" *ngIf="showPassword" (click)="toggleShow()">visibility_off</span>
   </button>
-	<div class="messaggeError errorContraseña"
+	<div class="messaggeError errorPassword"
     *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
 		Contraseña mínimo 5 caracteres
   </div>
-  <div class="messaggeError errorContraseña" *ngIf="showErrPassword">{{messageErrorPassword}}</div>
-	<button type="submit" id="iniciar"
+  <div class="messaggeError errorPassword" *ngIf="showErrPassword">{{messageErrorPassword}}</div>
+	<button type="submit" id="buttonLogin"
     [disabled]="loginForm.invalid"
 		[ngClass]="{'disabledBtn': loginForm.invalid}">Iniciar sesión
   </button>
 </form>
 
-<img id="comidaLogin" src="../../../assets/comidaRapida.png" alt="papas fritas, gaseosa, aros de cebolla y hamburguesa">
-<!-- <div *ngIf="users">{{ users }}</div> -->
-<!-- (ngSubmit)="onLogin(loginForm.value)" -->
-
-<!-- <button (click)="updateName()">Update Name</button>   Evento al botón-->
+<img id="fastFood" src="../../../assets/comidaRapida.png" alt="papas fritas, gaseosa, aros de cebolla y hamburguesa">

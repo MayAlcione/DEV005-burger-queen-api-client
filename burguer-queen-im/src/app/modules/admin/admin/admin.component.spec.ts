@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminComponent } from './admin.component';
+import { HeaderAdminComponent } from '../components/header-admin/header-admin.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MemberModalComponent } from '../components/member-modal/member-modal.component';
+import { MembersComponent } from '../components/members/members.component';
+
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -8,7 +13,8 @@ describe('AdminComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminComponent]
+      declarations: [AdminComponent, HeaderAdminComponent, MemberModalComponent, MembersComponent],
+      imports: [HttpClientTestingModule]
     });
     fixture = TestBed.createComponent(AdminComponent);
     component = fixture.componentInstance;
