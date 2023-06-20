@@ -31,8 +31,6 @@ messageErrorEmail:String='';
 showErrEmail:boolean=false;
 showErrPassword:boolean=false;
 
-
-
 //Función que se activa al dar click al botón 'Iniciar sesión'
   saveAuth() {
   // Petición a la Api para Auth
