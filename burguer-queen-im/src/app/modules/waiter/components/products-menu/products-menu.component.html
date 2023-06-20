@@ -1,0 +1,21 @@
+<section class="boxFood">
+  <ng-container *ngIf="showBreakfastWithClick"> <!-- Contenedor que no se renderiza -->
+    <!-- no se puede tener dos *ng en la misma etiqueta, sale error -->
+    <!-- Nunca olvidar de poner el let i en ngFor -->
+    <div class="unidFood" *ngFor="let item of optionBreakfast; let i=index" data-id="{{item?.id}}">
+      <!-- {{item?.image}} desestructuracion del Obj productos, nunca olvidar el signo ?, para evitar errores -->
+      <img class="imageFood" src="{{item?.image}}" alt="{{item?.name}}">
+      <span class="textFood">{{item?.name}}</span>
+      <span class="priceFood">$ {{item?.price}}</span>
+      <button (click)="addProductInOrder(item)"> + </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="showLunchWithClick"> <!-- ngIf trabaja con boolean -->
+    <div class="unidFood" *ngFor="let item of optionLunch; let i=index">
+      <img class="imageFood" src="{{item?.image}}" alt="{{item?.name}}">
+      <span class="textFood">{{item?.name}}</span>
+      <span class="priceFood">$ {{item?.price}}</span>
+      <button (click)="addProductInOrder(item)"> + </button>
+    </div>
+  </ng-container>
+</section>

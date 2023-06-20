@@ -14,6 +14,8 @@ export class LoginService {
     ) {}
 
   getAuth(body:{}): Observable<any>{
+    console.log('si entró');
+
     return this.http.post('http://localhost:8080/login', body)
   }
 }
