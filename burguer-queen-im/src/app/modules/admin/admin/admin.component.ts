@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../../service/admin.service';
 
 interface Usuario {
   id: number;
@@ -11,10 +12,19 @@ interface Usuario {
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent {
-  listaUsuarios: Usuario[] = [
-    { id: 1, email: 'usuario1@example.com', role: 'admin' },
-    { id: 2, email: 'usuario2@example.com', role: 'user' },
-    { id: 3, email: 'usuario3@example.com', role: 'user' }
-  ];
+export class AdminComponent implements OnInit {
+  usuarios: Usuario[] = []; // Variable para almacenar la lista de usuarios
+
+  constructor(private adminService: AdminService) {}
+
+  ngOnInit() {
+    this.adminService.obtenerUsuarios().subscribe(
+      (response: Usuario[]) => {
+        this.usuarios = response; // Asigna la lista de usuarios a la variable
+      },
+      (error: any) => {
+        // Maneja el error de la solicitud
+      }
+    );
+  }
 }

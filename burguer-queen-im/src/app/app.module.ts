@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
