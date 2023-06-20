@@ -1,25 +1,20 @@
 .container {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-  position: relative; 
-  z-index: 1; 
-}
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra verticalmente el contenido */
+    height: 10vh; /* Establece la altura del contenedor para ocupar todo el viewport */
+  }
   
   h2 {
     color: #DCB33A;
     font-weight: bolder;
     font-size: 40px;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
-    margin-right: 0px;
-    margin-left: 20px;
-    margin-top: -850px;
+    margin-right: 130px; /* Espacio entre el h2 y el botón */
     line-height: 52px;
   }
   
-  .btn-agregar {
+  .btn-add {
     background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
     font-size: 30px;
     border-radius: 15px;
@@ -27,11 +22,7 @@
     width: 50px;
     height: 50px;
     font-size: 40px;
-    margin-top: -890px;
-    margin-right: 0px;
-    margin-left: 150px;
     line-height: 52px;
-    z-index: 1;
   }
   
   .close:hover {
@@ -47,24 +38,6 @@
     margin-bottom: 10px;
   }
   
-  .modal {
-    position: fixed;
-    top: 65%;
-    left: 45%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-  }
- 
-  .page-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Ajusta el último valor (0.5) para cambiar la opacidad */
-    z-index: 9998; /* Un nivel menos que el modal */
-  }
-  
   .form-box {
     display: flex;
     width: 600px;
@@ -73,7 +46,6 @@
     border-radius: 20px;
     padding: 10px;
     margin-left: 100px;
-    margin-top: -450px;
   }
   
   .form-box label {
@@ -105,9 +77,10 @@
     outline: none;
   }
   
-  #correo::placeholder, 
-  #contraseña::placeholder,
-  #rol::placeholder{
+  #name::placeholder, 
+  #price::placeholder,
+  #image::placeholder,
+  #type {
     background-color: #f4f4f4;
     font-size: 20px;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
@@ -137,4 +110,5 @@
     cursor: pointer;
     color: #010101;
   }
- 
+  
+  

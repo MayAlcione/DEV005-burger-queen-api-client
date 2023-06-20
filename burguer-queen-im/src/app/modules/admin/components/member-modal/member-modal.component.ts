@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { AdminService } from 'src/app/service/admin.service';
-import { AuthService } from 'src/app/service/auth.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+interface Usuario {
+  id: number;
+  email: string;
+  role: string;
+}
 
 @Component({
   selector: 'app-member-modal',
@@ -9,39 +14,19 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./member-modal.component.css']
 })
 export class MemberModalComponent implements OnInit {
-  showModal = false;
-  adminForm: FormGroup = new FormGroup({
-    correo: new FormControl(''),
-    contraseña: new FormControl(''),
-    rol: new FormControl('')
+  adminForm = this.formBuilder.group({
+    correo: ['', Validators.required],
+    contraseña: ['', Validators.required],
+    rol: ['', Validators.required]
   });
-  usuarios: any[] = [];
 
-  constructor(private authService: AuthService, private adminService: AdminService) {}
+  usuarios: Usuario[] = [];
+  showModal = false;
 
-  ngOnInit() {
-    // Verificar si el usuario está autenticado
-    if (this.authService.isAuthenticated()) {
-      // Usuario autenticado, llamar al método para obtener los usuarios
-      this.obtenerUsuarios();
-    } else {
-      // Usuario no autenticado, realizar el proceso de autenticación
-      const email = 'correo@example.com';
-      const password = 'contraseña';
-      const role = 'rol';
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
-      this.authService.admin(email, password, role);
-
-      // Esperar un tiempo para que la solicitud de autenticación se complete
-      setTimeout(() => {
-        if (this.authService.isAuthenticated()) {
-          // Usuario autenticado, llamar al método para obtener los usuarios
-          this.obtenerUsuarios();
-        } else {
-          console.log('Error de autenticación');
-        }
-      }, 2000); // Ajusta el tiempo según sea necesario
-    }
+  ngOnInit(): void {
+  
   }
 
   abrirModal() {
@@ -50,48 +35,41 @@ export class MemberModalComponent implements OnInit {
 
   cerrarModal() {
     this.showModal = false;
-    this.adminForm.reset(); // Restablecer los valores del formulario
   }
+  
+agregarUsuario() {
+  if (this.adminForm.valid) {
+    const correo = this.adminForm.value.correo as string;
+    const contraseña = this.adminForm.value.contraseña as string;
+    const rol = this.adminForm.value.rol as string;
 
-  agregarUsuario() {
-    const { correo, contraseña, rol } = this.adminForm.value;
+    if (correo && contraseña && rol) {
+      const newUser = {
+        email: correo,
+        password: contraseña,
+        role: rol
+      };
 
-    // Llamar al servicio para agregar el usuario
-    this.adminService.agregarUsuario(correo, contraseña, rol)
-      .subscribe(
+      // Configurar los encabezados
+      const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+      // Realizar la solicitud POST al backend con los encabezados
+      this.http.post('http://localhost:8080/users', newUser, { headers }).subscribe(
         (response: any) => {
-          // Manejar la respuesta exitosa
-          console.log('Usuario agregado:', response);
-          // Agregar el usuario a la lista de usuarios
-          this.usuarios.push(response);
-          // Cerrar el modal y restablecer el formulario
+          const createdUser: Usuario = {
+            id: response.id,
+            email: response.email,
+            role: response.role
+          };
+          this.usuarios.push(createdUser);
+          this.adminForm.reset();
           this.cerrarModal();
         },
         (error: any) => {
-          // Manejar el error
-          console.error('Error al agregar el usuario:', error);
+          // Manejar el error de la solicitud
         }
       );
+    }
   }
-
-  obtenerUsuarios() {
-    this.adminService.obtenerUsuarios()
-      .subscribe(
-        (response: any) => {
-          // Manejar la respuesta exitosa
-          this.usuarios = response;
-          console.log('Usuarios obtenidos:', response);
-        },
-        (error: any) => {
-          // Manejar el error
-          if (error.status === 401) {
-            console.error('No se encontró la cabecera de autenticación');
-          } else if (error.status === 403) {
-            console.error('Token de autenticación inválido');
-          } else {
-            console.error('Error en la solicitud:', error);
-          }
-        }
-      );
-  }
+}
 }

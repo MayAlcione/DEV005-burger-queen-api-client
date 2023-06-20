@@ -1,0 +1,11 @@
+<div class="user-post-container">
+  <div *ngFor="let usuario of usuarios" class="user-post">
+    <p>Email: {{ usuario.email }}</p>
+    <hr>
+    <p>Contraseña: {{ usuario.id }}</p>
+    <hr>
+    <p>Rol: {{ usuario.role }}</p>
+  </div>
+</div>
+
+<app-member-modal></app-member-modal>

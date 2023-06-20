@@ -1,5 +1,11 @@
 <div class="navAdmin">
-    <a href="#">Equipo</a>
-    <a href="#">Productos</a>
-  </div>
+  <a class="navAdminInactive"
+    [ngClass]="{'navAdminActive': router.url !== '/admin/products'}"
+    [routerLink]="['/admin']"
+  >Equipo</a>
   
+  <a class="navAdminInactive"
+    [ngClass]="{'navAdminActive': router.url === '/admin/products'}"
+    [routerLink]="['/admin/products']"
+  >Productos</a>
+</div>
