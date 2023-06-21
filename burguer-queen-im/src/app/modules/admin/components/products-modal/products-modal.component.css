@@ -1,7 +1,7 @@
 .container {
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra verticalmente el contenido */
+    align-items: center; 
     height: 10vh; /* Establece la altura del contenedor para ocupar todo el viewport */
   }
   
@@ -10,7 +10,7 @@
     font-weight: bolder;
     font-size: 40px;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
-    margin-right: 130px; /* Espacio entre el h2 y el botón */
+    margin-right: 130px; 
     line-height: 52px;
   }
   

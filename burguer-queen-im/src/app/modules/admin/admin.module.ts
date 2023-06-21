@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminService } from 'src/app/service/admin.service';
@@ -28,6 +29,7 @@ import { AdminRoutingModule } from './admin-routing.module';
     FormsModule,
     ReactiveFormsModule, 
     RouterModule,
+    HttpClientModule,
     AdminRoutingModule
   ]
 })
