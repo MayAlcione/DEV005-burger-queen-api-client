@@ -15,7 +15,7 @@ export class ProductsModalComponent {
     image: new FormControl(''),
     type: new FormControl('')
   });
-  productos: any[] = [];
+  products: any[] = [];
 
   constructor(private adminService: AdminService) {}
 
@@ -40,7 +40,7 @@ export class ProductsModalComponent {
           // Manejar la respuesta exitosa
           console.log('Producto agregado:', response);
           // Agregar el producto a la lista de productos
-          this.productos.push(response);
+          this.products.push(response);
           // Cerrar el modal y restablecer el formulario
           this.closeModal();
         },

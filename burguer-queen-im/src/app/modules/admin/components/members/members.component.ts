@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AdminService } from '../../../../service/admin.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-interface Usuario {
+interface User {
   id: number;
   email: string;
   role: string;
@@ -15,14 +15,14 @@ interface Usuario {
 })
 export class MembersComponent implements OnInit {
   
-  @Input() usuarios?: Usuario[];
+  @Input() users?: User[];
 
   constructor(private adminService: AdminService, private http: HttpClient) {}
 
   ngOnInit() {
-    this.getUsuarios().subscribe(
-      (usuarios: Usuario[]) => {
-        this.usuarios = usuarios;
+    this.getUsers().subscribe(
+      (users: User[]) => {
+        this.users = users;
       },
       (error: any) => {
         // Manejar el error de la solicitud
@@ -30,14 +30,14 @@ export class MembersComponent implements OnInit {
     );
   }
 
-  getUsuarios() {
-    const url = '/users';
+  getUsers() {
+    const url = '/members';
     const token = ''; // Aquí debes proporcionar el token de acceso
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}` // Agrega el encabezado de autorización con el token
     });
 
-    return this.http.get<Usuario[]>(url, { headers });
+    return this.http.get<User[]>(url, { headers });
   }
 }

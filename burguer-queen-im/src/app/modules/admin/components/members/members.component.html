@@ -1,10 +1,10 @@
 <div class="user-post-container">
-  <div *ngFor="let usuario of usuarios" class="user-post">
-    <p>Email: {{ usuario.email }}</p>
+  <div *ngFor="let user of users" class="user-post">
+    <p>ID: {{ user.id }}</p>
     <hr>
-    <p>Contraseña: {{ usuario.id }}</p>
+    <p>Correo: {{ user.email }}</p>
     <hr>
-    <p>Rol: {{ usuario.role }}</p>
+    <p>Rol: {{ user.role }}</p>
   </div>
 </div>
 
