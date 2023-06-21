@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AdminService } from '../../../../service/admin.service';
-import { HttpClient } from '@angular/common/http'; // Importa el servicio HttpClient
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 interface Usuario {
   id: number;
@@ -14,16 +14,15 @@ interface Usuario {
   styleUrls: ['./members.component.css']
 })
 export class MembersComponent implements OnInit {
-  @Input() usuarios: Usuario[] = []; // Agrega la entrada "usuarios"
+  
+  @Input() usuarios?: Usuario[];
 
   constructor(private adminService: AdminService, private http: HttpClient) {}
 
   ngOnInit() {
-    const uid = 'anita.borg@systers.xyz'; // ID o email del usuario que deseas obtener
-
-    this.getUser(uid).subscribe(
-      (usuario: Usuario) => {
-        this.usuarios.push(usuario); // Agrega el usuario obtenido a la lista de usuarios
+    this.getUsuarios().subscribe(
+      (usuarios: Usuario[]) => {
+        this.usuarios = usuarios;
       },
       (error: any) => {
         // Manejar el error de la solicitud
@@ -31,8 +30,14 @@ export class MembersComponent implements OnInit {
     );
   }
 
-  getUser(uid: string) {
-    const url = `/users/${uid}`; // URL de la solicitud GET
-    return this.http.get<Usuario>(url);
+  getUsuarios() {
+    const url = '/users';
+    const token = ''; // Aquí debes proporcionar el token de acceso
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}` // Agrega el encabezado de autorización con el token
+    });
+
+    return this.http.get<Usuario[]>(url, { headers });
   }
 }
