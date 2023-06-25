@@ -13,17 +13,17 @@ interface User {
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  users: User[] = []; // Variable para almacenar la lista de users
+  users: User[] = [];
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService) { }
 
   ngOnInit() {
     this.adminService.getUsers().subscribe(
-      (response: User[]) => {
-        this.users = response; // Asigna la lista de users a la variable
+      users => {
+        this.users = users;
       },
-      (error: any) => {
-        // Maneja el error de la solicitud
+      error => {
+        console.error('Error al obtener usuarios:', error);
       }
     );
   }

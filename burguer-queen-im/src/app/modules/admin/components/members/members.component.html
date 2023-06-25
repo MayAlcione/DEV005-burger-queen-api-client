@@ -5,7 +5,10 @@
     <p>Correo: {{ user.email }}</p>
     <hr>
     <p>Rol: {{ user.role }}</p>
+    
+    <div class="btn-container">
+      <button class="btn-edit" (click)="edit(user)">Editar</button>
+      <button class="btn-eliminate" (click)="eliminate(user)">Eliminar</button>
+    </div>
   </div>
 </div>
-
-<app-member-modal></app-member-modal>
