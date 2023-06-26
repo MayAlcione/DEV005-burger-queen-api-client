@@ -25,7 +25,7 @@ export class MembersComponent implements OnInit {
         this.users = users;
       },
       (error: any) => {
-        // Manejar el error de la solicitud
+        
       }
     );
   }
@@ -49,8 +49,7 @@ export class MembersComponent implements OnInit {
       Authorization: `Bearer ${token}` // Agrega el encabezado de autorización con el token
     });
 
-    // Aquí puedes enviar la solicitud PATCH con los datos actualizados del usuario
-    // Utiliza el método patch() del objeto HttpClient y pasa los datos a actualizar
+    // Utilizar el método patch() del objeto HttpClient y pasa los datos a actualizar
     this.http.patch(url, user, { headers }).subscribe(
       () => {
         // Lógica después de la edición exitosa
@@ -70,8 +69,6 @@ export class MembersComponent implements OnInit {
       Authorization: `Bearer ${token}` // Agrega el encabezado de autorización con el token
     });
 
-    // Aquí puedes enviar la solicitud DELETE para eliminar el usuario
-    // Utiliza el método delete() del objeto HttpClient
     this.http.delete(url, { headers }).subscribe(
       () => {
         // Lógica después de la eliminación exitosa

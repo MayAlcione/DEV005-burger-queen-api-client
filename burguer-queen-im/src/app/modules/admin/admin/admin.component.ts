@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../../../service/admin.service';
+import { AdminService } from '../../../service/admin.service'
+import { MemberModalComponent } from '../components/member-modal/member-modal.component'; 
+
 
 interface User {
   id: number;
@@ -10,7 +12,7 @@ interface User {
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
   users: User[] = [];
