@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { arrProducts } from './ejemplos';
 import { Product } from 'src/app/shared/interfaces/product';
 
@@ -15,15 +15,21 @@ export class ProductsMenuComponent{
   //Variables declaradas para enviarlas a su padre como atributo
   @Input() showBreakfastWithClick:boolean;
   @Input() showLunchWithClick:boolean;
+
+  @Output() sendingOrders: EventEmitter<Product>;
   //Toda variable debe ser inicializada en el constructor
   constructor() {
     //Valor True, para que al inicio solo se renderice la lista del desayuno
     this.showBreakfastWithClick=true;
     //Valor False, para que esté oculto cuando se entra a la seccion menú
     this.showLunchWithClick=false;
+
+    this.sendingOrders = new EventEmitter();
   }
+
   addProductInOrder(product:Product) {
-    console.log('click click', product.id);
+    this.sendingOrders.emit(product)
+    // console.log('click click', product);
 
   }
 }

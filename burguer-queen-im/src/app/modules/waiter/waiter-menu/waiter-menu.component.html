@@ -8,5 +8,7 @@
 ></app-option-menu>
 <!-- showBreakfastWithClick/showLunchWithClick variables traidas con Input a su etiqueta padre para reasignar sus valores -->
 <!-- statusShowBreakfast, variable que cambia el valor cuando se ejecutan las funciones de su componente hermano -->
-<app-products-menu [showBreakfastWithClick]=statusShowBreakfast [showLunchWithClick]=statusShowLunch></app-products-menu>
-<app-order-list></app-order-list>
+<app-products-menu [showBreakfastWithClick]=statusShowBreakfast [showLunchWithClick]=statusShowLunch
+  (sendingOrders)="onSendingOrders($event)"
+></app-products-menu>
+<app-order-list [total]="arrayProductInit"></app-order-list>

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AdminComponent } from './admin.component';
 import { HeaderAdminComponent } from '../components/header-admin/header-admin.component';
@@ -14,7 +15,8 @@ describe('AdminComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AdminComponent, HeaderAdminComponent, MemberModalComponent, MembersComponent],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule],
+
     });
     fixture = TestBed.createComponent(AdminComponent);
     component = fixture.componentInstance;
