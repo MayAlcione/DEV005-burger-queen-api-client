@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderAdminComponent } from './header-admin.component';
 
@@ -8,7 +9,8 @@ describe('HeaderAdminComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderAdminComponent]
+      declarations: [HeaderAdminComponent],
+      imports:[RouterTestingModule]
     });
     fixture = TestBed.createComponent(HeaderAdminComponent);
     component = fixture.componentInstance;

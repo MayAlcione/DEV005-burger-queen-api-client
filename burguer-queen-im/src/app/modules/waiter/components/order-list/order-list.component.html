@@ -13,19 +13,21 @@
 	  <input type="text" id="nameUser" placeholder="Nombre del cliente">
   </div>
   <hr>
-  <div class="boxOrderCenter">
-    <button (click)="subtract()"> - </button>
-    <span class="number numberCenter" > {{numberCounter}} </span>
-    <button (click)="add()"> + </button>
-    <span class="food">SANDIWCH DE  JAMON Y QUESO</span>
-    <span class="number numberPrice"> $ 5 </span>
-  </div>
-  <div class="boxOrderCenter">
-    <button (click)="subtract()"> - </button>
-    <span class="number numberCenter"> {{numberCounter1}} </span>
-    <button (click)="add()"> + </button>
-    <span class="food">HAMBURGUESA DOBLE</span>
-    <span class="number numberPrice"> $ 15 </span>
+  <div class="ngBoxOrder">
+    <div class="boxOrderCenter" *ngFor="let item of totalProductsInOrder; let i=index">
+      <button (click)="subtract()"> - </button>
+      <span class="number numberCenter" > {{numberCounter}} </span>
+      <button (click)="add()"> + </button>
+      <span class="food">{{item?.name}}</span>
+      <span class="number numberPrice">$ {{item?.price}}</span>
+    </div>
+    <!-- <div class="boxOrderCenter">
+      <button (click)="subtract()"> - </button>
+      <span class="number numberCenter"> {{numberCounter1}} </span>
+      <button (click)="add()"> + </button>
+      <span class="food">HAMBURGUESA DOBLE</span>
+      <span class="number numberPrice"> $ 15 </span>
+    </div> -->
   </div>
   <hr>
   <div class="boxOrderDown">

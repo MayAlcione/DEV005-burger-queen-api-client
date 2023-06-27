@@ -55,8 +55,16 @@ select option{
 .numberPrice{
   padding-left: 40px;
 }
+.ngBoxOrder{
+  height: 220px;
+  overflow-y: auto;
+}
+/* .ngBoxOrder::-webkit-scrollbar{
+  margin-left: -30px;
+  background-color: aqua;
+} */
 .boxOrderCenter .food{
-  font-size: 25px;
+  font-size: 28px;
   flex: 250px;
   margin-left: 35px;
   margin-top: 5px;
