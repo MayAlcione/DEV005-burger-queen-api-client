@@ -11,6 +11,7 @@
     </select>
     <label for="nameUser">Nombre: </label>
 	  <input type="text" id="nameUser" placeholder="Nombre del cliente">
+    <span class="material-symbols-outlined cleanOrder">delete_forever</span>
   </div>
   <hr>
   <div class="ngBoxOrder">
@@ -20,6 +21,7 @@
       <button (click)="add()"> + </button>
       <span class="food">{{item?.name}}</span>
       <span class="number numberPrice">$ {{item?.price}}</span>
+      <span class="material-symbols-outlined">delete</span>
     </div>
     <!-- <div class="boxOrderCenter">
       <button (click)="subtract()"> - </button>
