@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../../../service/admin.service';
+import { AdminService } from '../../../service/admin.service'
+import { MemberModalComponent } from '../components/member-modal/member-modal.component'; 
 
 interface User {
   id: number;
@@ -10,20 +11,27 @@ interface User {
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  users: User[] = []; // Variable para almacenar la lista de users
+  users: User[] = [];
+  selectedUser: User | null = null;
+  showModal: boolean = false;
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService) { }
 
+  openEditModal(user: User): void {
+    this.selectedUser = user;
+    this.showModal = true;
+  }
+  
   ngOnInit() {
     this.adminService.getUsers().subscribe(
-      (response: User[]) => {
-        this.users = response; // Asigna la lista de users a la variable
+      users => {
+        this.users = users;
       },
-      (error: any) => {
-        // Maneja el error de la solicitud
+      error => {
+        console.error('Error al obtener usuarios:', error);
       }
     );
   }
