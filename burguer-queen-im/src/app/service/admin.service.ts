@@ -12,7 +12,7 @@ export class AdminService {
 
   getUsers(): Observable<User[]> {
     const url = `${this.apiUrl}/users`;
-    const token = localStorage.getItem('Token'); // Obtener el token guardado
+    const token = localStorage.getItem('Token');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
@@ -21,38 +21,38 @@ export class AdminService {
     return this.http.get<User[]>(url, { headers });
   }
 
-  addUser(email: string, password: string, role: string): Observable<any> {
-    const url = `${this.apiUrl}/users`;
-    const token = localStorage.getItem('Token'); // Obtener el token guardado
+  editUser(user: User): Observable<any> {
+    const url = `${this.apiUrl}/users/${user.id}`;
+    const token = localStorage.getItem('Token');
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.post<any>(url, { email, password, role }, { headers });
+    return this.http.patch(url, user, { headers });
   }
 
-  eliminate(userId: number): Observable<any> {
+  deleteUser(userId: number): Observable<any> {
     const url = `${this.apiUrl}/users/${userId}`;
-    const token = localStorage.getItem('Token'); // Obtener el token guardado
-  
+    const token = localStorage.getItem('Token');
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-  
-    return this.http.delete<any>(url, { headers });
+
+    return this.http.delete(url, { headers });
   }
-  
   addProduct(name: string, price: number, image: string, type: string): Observable<any> {
     const url = `${this.apiUrl}/products`;
-    const token = localStorage.getItem('token'); // Obtener el token guardado
-
+    const token = localStorage.getItem('Token');
+  
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-
+  
     return this.http.post<any>(url, { name, price, image, type }, { headers });
   }
+  
 }
 
 interface User {

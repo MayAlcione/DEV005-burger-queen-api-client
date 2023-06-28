@@ -7,8 +7,38 @@
     <p>Rol: {{ user.role }}</p>
     
     <div class="btn-container">
-      <button class="btn-edit" (click)="edit(user)">Editar</button>
+      <button class="btn-edit" (click)="openEditModal(user)">Editar</button>
       <button class="btn-eliminate" (click)="eliminate(user)">Eliminar</button>
     </div>
   </div>
 </div>
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <div class="form-box">
+      <form [formGroup]="adminForm" (ngSubmit)="edit()">
+
+        <p>Editar miembro del equipo</p>
+
+       <!-- <label for="id">ID</label>
+        <input type="id" id="id" placeholder="ejemplo" formControlName="id" [value]="selectedUser?.id"> -->
+
+        <label for="email">Correo</label>
+        <input type="text" id="email" formControlName="email" [value]="selectedUser?.email">
+        <br>
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" formControlName="password">
+
+        <label for="role">Rol</label>
+        <input type="text" id="role" formControlName="role" [value]="selectedUser?.role">
+        <br>
+
+        <button type="submit">Editar</button>
+        <button type="button" (click)="closeModal()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="page-overlay" *ngIf="showModal"></div>
