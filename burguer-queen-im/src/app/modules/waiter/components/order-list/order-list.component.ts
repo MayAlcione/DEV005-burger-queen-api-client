@@ -9,8 +9,9 @@ import { Product } from 'src/app/shared/interfaces/product';
 export class OrderListComponent implements OnChanges {
 
   numberCounter:number = 1;
+  totalToPay:number = 0;
 
-  @Input('total') totalProductsInOrder:any = [];
+  @Input('total') totalProductsInOrder:Array<Product> = [];
 
   subtract(){
     return this.numberCounter--;
@@ -18,14 +19,34 @@ export class OrderListComponent implements OnChanges {
   add(){
     return this.numberCounter++;
   }
+
   constructor() {
-    //this.totalProductsInOrder = [];
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.totalProductsInOrder);
+  deleteAll() {
+    while (this.totalProductsInOrder.length > 0 ) {
+      this.totalProductsInOrder.pop();
+    }
+    //this.totalProductsInOrder = []
+    this.totalToPay = 0;
+  }
+  deleteOne(idProduct:number) {
+    this.totalProductsInOrder.splice(this.totalProductsInOrder.findIndex(elem => elem.id === idProduct), 1)
+    // this.totalToPay = 0;
+    this.totalProductsInOrder.filter(elem => {
+      elem.id === idProduct
+      this.totalToPay -= elem.price
+    })
+  }
 
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.totalToPay = 0;
+    this.totalProductsInOrder.forEach(elem => {
+      this.totalToPay += elem.price
+    })
+    console.log(this.totalProductsInOrder);
   }
 
 }
