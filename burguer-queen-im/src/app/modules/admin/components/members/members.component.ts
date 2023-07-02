@@ -2,12 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AdminService } from '../../../../service/admin.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
-
-interface User {
-  id: number;
-  email: string;
-  role: string;
-}
+import { User } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'app-members',

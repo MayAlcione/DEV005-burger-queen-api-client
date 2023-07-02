@@ -1,29 +1,28 @@
 <div class="container">
     <h2>Lista de produtos</h2>
     <button class="btn-add" (click)="openModal()">+</button>
-  </div>
-  
+  </div>     
   <div class="modal" *ngIf="showModal">
     <div class="modal-content">
       <div class="form-box">
-        <form [formGroup]="adminForm">
+        <form [formGroup]="adminForm" (ngSubmit)="getProduct()">
           <span class="close" (click)="closeModal()">&times;</span>
           <p>Producto nuevo</p>
   
           <label for="name">Producto</label>
-          <input type="text" id="name" placeholder="ejemplo" formControlName="name">
+          <input type="text" id="name" placeholder="nombre del producto" formControlName="name">
           <br>
   
           <label for="price">Precio</label>
-          <input type="text" id="price" placeholder="ejemplo" formControlName="price">
+          <input type="text" id="price" placeholder="$xxx" formControlName="price">
           <br>
   
           <label for="image">Imagen</label>
-          <input type="text" id="image" placeholder="ejemplo" formControlName="image">
+          <input type="text" id="image" placeholder="https://ejemplo.png" formControlName="image">
           <br>
 
           <label for="type">Tipo</label>
-          <input type="text" id="type" placeholder="ejemplo" formControlName="type">
+          <input type="text" id="type" placeholder="Desayuno o Almuerzo" formControlName="type">
           <br>
           <button type="submit">Agregar</button>
           <button type="button" (click)="closeModal()">Cancelar</button>
@@ -31,6 +30,6 @@
       </div>
     </div>
   </div>
-  
+  <div class="page-overlay" *ngIf="showModal"></div>
   
   

@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from 'src/app/shared/interfaces/user';
 
-interface User {
-  id: number;
-  email: string;
-  role: string;
-}
+
 
 @Component({
   selector: 'app-member-modal',

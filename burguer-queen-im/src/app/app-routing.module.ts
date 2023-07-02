@@ -8,8 +8,10 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => import ('./modules/admin/admin.module').then((m) => m.AdminModule) },
   { path: 'waiter', loadChildren: () => import ('./modules/waiter/waiter.module').then((m) => m.WaiterModule) },
   { path: 'chef', loadChildren: () => import ('./modules/chef/chef.module').then((m) => m.ChefModule) },
-  { path: 'member-modal', loadChildren: () => import ('./modules/admin/components/member-modal/member-modal.component').then((m) => m.MemberModalComponent)},
-  { path: 'members',loadComponent: () => import ('./modules/admin/components/members/members.component').then((m) => m.MembersComponent) } 
+  { path: 'member-modal', loadChildren: () => import ('./modules/admin/components/member-modal/member-modal.component').then((m) => m.MemberModalComponent) },
+  { path: 'members',loadComponent: () => import ('./modules/admin/components/members/members.component').then((m) => m.MembersComponent) }, 
+  { path: 'products', loadChildren: () => import ('./modules/admin/components/products/products.component').then((m) => m.ProductsComponent) },
+  { path: 'products-modal', loadChildren: () => import ('./modules/admin/components/products-modal/products-modal.component').then((m) => m.ProductsModalComponent) }
 ];
 
 @NgModule({
