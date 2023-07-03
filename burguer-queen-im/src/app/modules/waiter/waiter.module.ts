@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { WaiterRoutingModule } from './waiter-routing.module';
 import { HeaderWaiterComponent } from './components/header-waiter/header-waiter.component';
@@ -23,7 +24,8 @@ import { ProductsMenuComponent } from './components/products-menu/products-menu.
   ],
   imports: [
     CommonModule,
-    WaiterRoutingModule
+    WaiterRoutingModule,
+    FormsModule,
   ]
 })
 export class WaiterModule { }

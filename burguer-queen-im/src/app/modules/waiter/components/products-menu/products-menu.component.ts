@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { arrProducts } from './ejemplos';
 import { Product } from 'src/app/shared/interfaces/product';
+import { OneOrder } from 'src/app/shared/interfaces/createOrder';
 
 @Component({
   selector: 'app-products-menu',
@@ -16,7 +17,7 @@ export class ProductsMenuComponent{
   @Input() showBreakfastWithClick:boolean;
   @Input() showLunchWithClick:boolean;
 
-  @Output() sendingOrders: EventEmitter<Product>;
+  @Output() sendingOrders: EventEmitter<OneOrder>;
   //Toda variable debe ser inicializada en el constructor
   constructor() {
     //Valor True, para que al inicio solo se renderice la lista del desayuno
@@ -28,8 +29,12 @@ export class ProductsMenuComponent{
   }
 
   addProductInOrder(product:Product) {
-    this.sendingOrders.emit(product)
-    // console.log('click click', product);
+    const objProduct:OneOrder = {
+      qty: 1,
+      product: product
+    }
+    this.sendingOrders.emit(objProduct)
+    //console.log('click click', objProduct);
 
   }
 }
