@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { Product } from '../shared/interfaces/product';
 import { User } from '../shared/interfaces/user';
 
@@ -9,8 +9,13 @@ import { User } from '../shared/interfaces/user';
 })
 export class AdminService {
   private apiUrl = 'http://localhost:8080';
+  private refresh = new Subject<void>();
 
   constructor(private http: HttpClient) {}
+
+  get refresh$(): Observable<void> {
+    return this.refresh.asObservable();
+  }
 
   getUsers(): Observable<User[]> {
     const url = `${this.apiUrl}/users`;
@@ -31,7 +36,11 @@ export class AdminService {
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.patch(url, user, { headers });
+    return this.http.patch(url, user, { headers }).pipe(
+      tap(() => {
+        this.refresh.next();
+      })
+    );
   }
 
   deleteUser(userId: number): Observable<any> {
@@ -76,5 +85,9 @@ export class AdminService {
     });
 
     return this.http.delete(url, { headers });
+  }
+
+  emitRefreshEvent(): void {
+    this.refresh.next();
   }
 }

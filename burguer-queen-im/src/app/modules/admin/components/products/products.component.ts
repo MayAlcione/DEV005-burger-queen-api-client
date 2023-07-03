@@ -9,9 +9,8 @@ import { Product } from 'src/app/shared/interfaces/product';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-
 export class ProductsComponent implements OnInit {
-  @Input() products?: Product [];
+  @Input() products?: Product[];
   adminForm: FormGroup;
   selectedProduct: Product | null = null;
   showModal: boolean = false;
@@ -32,14 +31,11 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getProducts().subscribe(
-      (products: Product[]) => {
-        this.products = products;
-      },
-      (error: any) => {
-        console.error('Error al obtener produtos:', error);
-      }
-    );
+    this.getProducts();
+
+    this.adminService.refresh$.subscribe(() => {
+      this.getProducts();
+    });
   }
 
   getProducts() {
@@ -50,7 +46,14 @@ export class ProductsComponent implements OnInit {
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.get<Product[]>(url, { headers });
+    this.http.get<Product[]>(url, { headers }).subscribe(
+      (products: Product[]) => {
+        this.products = products;
+      },
+      (error: any) => {
+        console.error('Error al obtener productos:', error);
+      }
+    );
   }
 
   openEditModal(product: Product): void {
@@ -58,20 +61,22 @@ export class ProductsComponent implements OnInit {
     this.adminForm.patchValue(product);
     this.showModal = true;
   }
+
   edit(): void {
     if (this.selectedProduct) {
       const updatedProduct = { ...this.selectedProduct, ...this.adminForm.value };
       this.adminService.editProduct(updatedProduct).subscribe(
         () => {
-          console.log('produto actualizado');
+          console.log('Producto actualizado');
           this.closeModal();
         },
         (error: any) => {
-          console.error('Error al actualizar el produto:', error);
+          console.error('Error al actualizar el producto:', error);
         }
       );
     }
   }
+
   closeModal(): void {
     this.selectedProduct = null;
     this.adminForm.reset();
@@ -81,26 +86,27 @@ export class ProductsComponent implements OnInit {
   eliminate(product: Product): void {
     const url = `http://localhost:8080/products/${product.id}`;
     const token = localStorage.getItem('Token');
-  
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este produto?');
+
+    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este producto?');
     if (confirmDelete) {
       this.http.delete(url, { headers }).subscribe(
         () => {
-          console.log('Produto eliminado');
-          alert('Produto eliminado exitosamente');
+          console.log('Producto eliminado');
+          alert('Producto eliminado exitosamente');
+          this.adminService.emitRefreshEvent(); // Emitir el evento de actualización
         },
         (error: any) => {
-          console.error('Error al eliminar el produto:', error);
-          alert('Error al eliminar el produto. Por favor, inténtalo nuevamente.');
+          console.error('Error al eliminar el producto:', error);
+          alert('Error al eliminar el producto. Por favor, inténtalo nuevamente.');
         }
       );
     } else {
-      // Acción cancelada por el produto
-      console.log('Eliminación de produto cancelada');
+      // Acción cancelada por el usuario
+      console.log('Eliminación de producto cancelada');
     }
-  } 
-
+  }
 }

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/shared/interfaces/product';
+import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
-  selector: 'app-products-modal',
+  selector:  'app-products-modal',
   templateUrl: './products-modal.component.html',
   styleUrls: ['./products-modal.component.css']
 })
@@ -13,13 +14,17 @@ export class ProductsModalComponent implements OnInit {
     name: ['', Validators.required],
     price: ['', Validators.required],
     image: ['', Validators.required],
-    type: ['', Validators.required],
+    type: ['', Validators.required]
   });
 
   products: Product[] = [];
   showModal = false;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private adminService: AdminService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -38,7 +43,7 @@ export class ProductsModalComponent implements OnInit {
       const image = this.adminForm.value.image as string;
       const type = this.adminForm.value.type as string;
 
-      if (name && typeof priceValue === 'number' && !isNaN(priceValue) && image && type) {
+      if (name && typeof priceValue === 'number' && image && type) {
         const price = priceValue as number;
         const newProduct = {
           name: name,
@@ -64,12 +69,17 @@ export class ProductsModalComponent implements OnInit {
             this.products.push(createdProduct);
             this.adminForm.reset();
             this.closeModal();
+            this.adminService.emitRefreshEvent(); // Emitir el evento de actualización
           },
           (error: any) => {
-            // Manejar el error de la solicitud
+            console.error('Error al crear el producto:', error); 
           }
         );
       }
     }
   }
 }
+
+  
+        
+
