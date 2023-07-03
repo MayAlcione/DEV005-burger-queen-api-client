@@ -1,30 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../service/admin.service'
-import { MemberModalComponent } from '../components/member-modal/member-modal.component'; 
-
-interface User {
-  id: number;
-  email: string;
-  role: string;
-}
+import { User } from 'src/app/shared/interfaces/user';
+import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
 })
+
 export class AdminComponent implements OnInit {
   users: User[] = [];
   selectedUser: User | null = null;
+  products: Product[] = []; 
+  selectedProduct: Product | null = null; 
   showModal: boolean = false;
 
   constructor(private adminService: AdminService) { }
 
-  openEditModal(user: User): void {
-    this.selectedUser = user;
-    this.showModal = true;
-  }
-  
   ngOnInit() {
     this.adminService.getUsers().subscribe(
       users => {
@@ -34,5 +27,14 @@ export class AdminComponent implements OnInit {
         console.error('Error al obtener usuarios:', error);
       }
     );
-  }
+  
+    this.adminService.getProduct().subscribe(
+      products => {
+        this.products = products;
+      },
+      error => {
+        console.error('Error al obtener productos:', error);
+      }
+    );
+  }  
 }

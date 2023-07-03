@@ -2,12 +2,11 @@
   <h2>Lista de personal</h2>
   <button class="btn-add" (click)="openModal()">+</button>
 </div>
-
 <div class="modal" *ngIf="showModal">
   <div class="modal-content">
     <div class="form-box">
       <form [formGroup]="adminForm" (ngSubmit)="getUser()">
-        <span class="close" (click)="closeModal()">&times;</span>
+       <!-- <span class="close" (click)="closeModal()">&times;</span>-->
         <p>Miembro nuevo del equipo</p>
 
         <label for="email">Correo</label>

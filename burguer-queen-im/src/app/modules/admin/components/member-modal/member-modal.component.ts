@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-interface User {
-  id: number;
-  email: string;
-  role: string;
-}
+import { User } from 'src/app/shared/interfaces/user';
+import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
   selector: 'app-member-modal',
@@ -23,7 +19,11 @@ export class MemberModalComponent implements OnInit {
   users: User[] = [];
   showModal = false;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private adminService: AdminService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -48,10 +48,8 @@ export class MemberModalComponent implements OnInit {
           role: role
         };
 
-        // Configurar los encabezados
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-        // Realizar la solicitud POST al backend con los encabezados
         this.http.post('http://localhost:8080/users', newUser, { headers }).subscribe(
           (response: any) => {
             const createdUser: User = {
@@ -62,9 +60,10 @@ export class MemberModalComponent implements OnInit {
             this.users.push(createdUser);
             this.adminForm.reset();
             this.closeModal();
+            this.adminService.emitRefreshEvent();
           },
           (error: any) => {
-            // Manejar el error de la solicitud
+            console.error('Error al crear el usuario:', error);
           }
         );
       }

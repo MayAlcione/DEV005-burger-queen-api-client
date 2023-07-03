@@ -1,25 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Product } from 'src/app/shared/interfaces/product';
 import { AdminService } from 'src/app/service/admin.service';
 
 @Component({
-  selector: 'app-products-modal',
+  selector:  'app-products-modal',
   templateUrl: './products-modal.component.html',
   styleUrls: ['./products-modal.component.css']
 })
-export class ProductsModalComponent {
-  showModal = false;
-  adminForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    price: new FormControl(''),
-    image: new FormControl(''),
-    type: new FormControl('')
+export class ProductsModalComponent implements OnInit {
+  adminForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    price: ['', Validators.required],
+    image: ['', Validators.required],
+    type: ['', Validators.required]
   });
-  products: any[] = [];
 
-  constructor(private adminService: AdminService) {}
+  products: Product[] = [];
+  showModal = false;
 
-  ngOnInit() {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private adminService: AdminService
+  ) {}
+
+  ngOnInit(): void {}
 
   openModal() {
     this.showModal = true;
@@ -27,28 +34,52 @@ export class ProductsModalComponent {
 
   closeModal() {
     this.showModal = false;
-    this.adminForm.reset(); // Restablecer los valores del formulario
   }
 
-  addProduct() {
-    const { name, price, image, type } = this.adminForm.value;
+  getProduct() {
+    if (this.adminForm.valid) {
+      const name = this.adminForm.value.name as string;
+      const priceValue = this.adminForm.value.price;
+      const image = this.adminForm.value.image as string;
+      const type = this.adminForm.value.type as string;
 
-    // Llamar al servicio para agregar el producto
-    this.adminService.addProduct(name, price, image, type)
-      .subscribe(
-        (response: any) => {
-          // Manejar la respuesta exitosa
-          console.log('Producto agregado:', response);
-          // Agregar el producto a la lista de productos
-          this.products.push(response);
-          // Cerrar el modal y restablecer el formulario
-          this.closeModal();
-        },
-        (error: any) => {
-          // Manejar el error
-          console.error('Error al agregar el producto:', error);
-        }
-      );
+      if (name && typeof priceValue === 'number' && image && type) {
+        const price = priceValue as number;
+        const newProduct = {
+          name: name,
+          price: price,
+          image: image,
+          type: type,
+        };
+
+        // Configurar los encabezados
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+        // Realizar la solicitud POST al backend con los encabezados
+        this.http.post('http://localhost:8080/products', newProduct, { headers }).subscribe(
+          (response: any) => {
+            const createdProduct: Product = {
+              id: response.id,
+              name: response.name,
+              price: response.price,
+              image: response.image,
+              type: response.type,
+              dateEntry: response.dateEntry,
+            };
+            this.products.push(createdProduct);
+            this.adminForm.reset();
+            this.closeModal();
+            this.adminService.emitRefreshEvent(); // Emitir el evento de actualización
+          },
+          (error: any) => {
+            console.error('Error al crear el producto:', error); 
+          }
+        );
+      }
+    }
   }
 }
+
+  
+        
 

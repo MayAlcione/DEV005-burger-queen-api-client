@@ -46,7 +46,7 @@ showErrPassword:boolean=false;
             localStorage.setItem('User', data.user.id)
             console.log(data.accessToken);
           //Navegación a las vistas según la credencial
-          if(data.user.role === 'admin'){
+          if(data.user.role === 'Administrador'){
             this.router.navigate(['/admin'])
           }
         },

@@ -1,2 +1,57 @@
 <app-header-admin></app-header-admin>
 <app-products-modal></app-products-modal>
+
+<div class="product-post-container">
+    <div *ngFor="let product of products" class="product-post">
+      <p>ID: {{ product.id }}</p>
+      <hr>
+      <p>Name: {{ product.name }}</p>
+      <hr>
+      <p>Price: {{ product.price }}</p>
+      <hr>
+      <p>Image: {{ product.image }}</p>
+      <hr>
+      <p>Type: {{ product.type }}</p>
+      <hr>
+      <p>DateEntry: {{ product.dateEntry }}</p>
+ 
+    <div class="btn-container">
+        <button class="btn-edit" (click)="openEditModal(product)">Editar</button>
+        <button class="btn-eliminate" (click)="eliminate(product)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <div class="form-box">
+        <form [formGroup]="adminForm" (ngSubmit)="edit()">
+  
+          <p>Editar producto</p>
+          <br>
+  
+          <label for="name">Producto</label>
+          <input type="text" id="name" formControlName="name" [value]="selectedProduct?.name">
+          <br>
+  
+          <label for="price">Precio</label>
+          <input type="text" id="price" formControlName="price">
+          <br>
+  
+          <label for="image">Imagen</label>
+          <input type="text" id="image" formControlName="image" [value]="selectedProduct?.image">
+          <br>
+
+          <label for="type">Tipo</label>
+          <input type="type" id="type" formControlName="type">
+          <br>
+  
+          <button type="submit">Editar</button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="page-overlay" *ngIf="showModal"></div>
+  
