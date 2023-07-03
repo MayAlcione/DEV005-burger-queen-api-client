@@ -1,38 +1,33 @@
 <div class="boxOrder">
   <div class="boxOrderUp">
     <label for="tables">Mesa: </label>
-    <select name="tables" id="tables">
-      <option value="mesa1">mesa 1</option>
-      <option value="mesa2">mesa 2</option>
-      <option value="mesa3">mesa 3</option>
-      <option value="mesa4">mesa 4</option>
-      <option value="mesa5">mesa 5</option>
-      <option value="mesa6">mesa 6</option>
+    <select name="tables" id="tables" [(ngModel)]="tableUserValue">
+      <option value="mesa 1">mesa 1</option>
+      <option value="mesa 2">mesa 2</option>
+      <option value="mesa 3">mesa 3</option>
+      <option value="mesa 4">mesa 4</option>
+      <option value="mesa 5">mesa 5</option>
+      <option value="mesa 6">mesa 6</option>
     </select>
     <label for="nameUser">Nombre: </label>
-	  <input type="text" id="nameUser" placeholder="Nombre del cliente">
+	  <input type="text" id="nameUser" placeholder="Nombre del cliente" [(ngModel)]="nameUserValue">
+    <span class="material-symbols-outlined cleanOrder" (click)="deleteAll()">delete_forever</span>
   </div>
   <hr>
   <div class="ngBoxOrder">
     <div class="boxOrderCenter" *ngFor="let item of totalProductsInOrder; let i=index">
-      <button (click)="subtract()"> - </button>
-      <span class="number numberCenter" > {{numberCounter}} </span>
-      <button (click)="add()"> + </button>
-      <span class="food">{{item?.name}}</span>
-      <span class="number numberPrice">$ {{item?.price}}</span>
+      <button (click)="subtract(item)"> - </button>
+      <span class="number numberCenter" > {{item.qty}}</span>
+      <button (click)="add(item)"> + </button>
+      <span class="food">{{item.product.name}}</span>
+      <span class="number numberPrice">$ {{item.product.price*item.qty}}</span>
+      <span class="material-symbols-outlined cleanOneOrder" (click)="deleteOne(item.product.id)">delete</span>
     </div>
-    <!-- <div class="boxOrderCenter">
-      <button (click)="subtract()"> - </button>
-      <span class="number numberCenter"> {{numberCounter1}} </span>
-      <button (click)="add()"> + </button>
-      <span class="food">HAMBURGUESA DOBLE</span>
-      <span class="number numberPrice"> $ 15 </span>
-    </div> -->
   </div>
   <hr>
   <div class="boxOrderDown">
-    <button>Cocina</button>
+    <button (click)="sendingOrder()">Cocina</button>
     <span class="total">TOTAL:</span>
-    <span class="totalPrice"> $ 20 </span>
+    <span class="totalPrice"> $ {{totalToPay}} </span>
   </div>
 </div>
