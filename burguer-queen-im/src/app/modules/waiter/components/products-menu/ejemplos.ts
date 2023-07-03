@@ -17,7 +17,7 @@ export const arrProducts = [
   },
   {
     "id": 1709,
-    "name": "Sandwich de jamón y queso",
+    "name": "Sandwich de jamón y palta",
     "price": 10,
     "image": "../../../../../assets/sandiwchJamonQueso.png",
     "type": "Desayuno",
