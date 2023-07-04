@@ -6,7 +6,7 @@
   .product-post {
     position: relative;
     background-color: transparent;
-    border: 4px solid #9e9e9e;
+    border: 4px solid #c8c8c8;
     border-radius: 20px;
     padding: 10px;
     width: 600px;
@@ -16,7 +16,7 @@
   }
   
   .product-post p {
-    color: #9e9e9e;
+    color: #c8c8c8;
     font-size: 30px;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
     margin: 5px 0;
@@ -35,7 +35,7 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    border: 4px solid #9e9e9e;
+    border: 4px solid #c8c8c8;
     border-radius: 15px;
     width: 90px;
     height: 70px;
@@ -44,7 +44,7 @@
     cursor: pointer;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
     font-weight: bolder;
-    color: #9e9e9e;
+    color: #c8c8c8;
   }
   
   .container {

@@ -69,6 +69,7 @@ export class ProductsComponent implements OnInit {
         () => {
           console.log('Producto actualizado');
           this.closeModal();
+          this.getProducts(); // Actualizar la lista de productos en tiempo real
         },
         (error: any) => {
           console.error('Error al actualizar el producto:', error);
@@ -76,6 +77,7 @@ export class ProductsComponent implements OnInit {
       );
     }
   }
+  
 
   closeModal(): void {
     this.selectedProduct = null;
