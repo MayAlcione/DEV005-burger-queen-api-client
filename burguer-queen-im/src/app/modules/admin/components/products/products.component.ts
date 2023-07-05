@@ -98,7 +98,7 @@ export class ProductsComponent implements OnInit {
       this.http.delete(url, { headers }).subscribe(
         () => {
           console.log('Producto eliminado');
-          alert('Producto eliminado exitosamente');
+         // alert('Producto eliminado exitosamente');
           this.adminService.emitRefreshEvent(); // Emitir el evento de actualización
         },
         (error: any) => {

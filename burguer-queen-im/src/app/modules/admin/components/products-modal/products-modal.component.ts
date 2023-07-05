@@ -69,26 +69,25 @@ export class ProductsModalComponent implements OnInit {
           .set('Authorization', `Bearer ${token}`); // Establecer el token en los encabezados
 
         // Realizar la solicitud POST al backend con los encabezados
-       
-this.http.post('http://localhost:8080/products', newProduct, { headers }).subscribe(
-  (response: any) => {
-    const createdProduct: Product = {
-      id: response.id,
-      name: response.name,
-      price: response.price,
-      image: response.image,
-      type: response.type,
-      dateEntry: response.dateEntry,
-    };
-    this.products.push(createdProduct);
-    this.adminForm.reset();
-    this.closeModal();
-    this.adminService.emitRefreshEvent(); // Emitir el evento de actualización
-  },
-  (error: any) => {
-    console.error('Error al crear el producto:', error);
-  }
-);
+        this.http.post('http://localhost:8080/products', newProduct, { headers }).subscribe(
+         (response: any) => {
+           const createdProduct: Product = {
+             id: response.id,
+             name: response.name,
+             price: response.price,
+             image: response.image,
+             type: response.type,
+             dateEntry: response.dateEntry,
+           };
+           this.products.push(createdProduct);
+           this.adminForm.reset();
+           this.closeModal();
+           this.adminService.emitRefreshEvent(); // Emitir el evento de actualización
+         },
+         (error: any) => {
+           console.error('Error al crear el producto:', error);
+         }
+       );
 
         this.http.get<Product[]>('http://localhost:8080/products', { headers }).subscribe(
           (products: Product[]) => {
