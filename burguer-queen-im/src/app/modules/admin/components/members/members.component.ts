@@ -103,7 +103,7 @@ export class MembersComponent implements OnInit, OnDestroy {
         () => {
           console.log('Usuario eliminado');
           this.getUsers();
-          alert('Usuario eliminado exitosamente');
+         // alert('Usuario eliminado exitosamente');
         },
         (error: any) => {
           console.error('Error al eliminar el usuario:', error);

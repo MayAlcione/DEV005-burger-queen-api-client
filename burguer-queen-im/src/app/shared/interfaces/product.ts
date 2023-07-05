@@ -4,7 +4,7 @@ export interface Product {
   price: number,
   image: string,
   type: string,
-  dateEntry: string
+  dateEntry: 	string
 }
 
 // const a:Product = {
