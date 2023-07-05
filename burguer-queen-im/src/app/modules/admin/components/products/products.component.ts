@@ -55,16 +55,22 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
-
   openEditModal(product: Product): void {
     this.selectedProduct = product;
-    this.adminForm.patchValue(product);
+    this.adminForm.patchValue({
+      ...product,
+     
+    });
     this.showModal = true;
   }
-
+  
   edit(): void {
     if (this.selectedProduct) {
-      const updatedProduct = { ...this.selectedProduct, ...this.adminForm.value };
+      const updatedProduct = {
+        ...this.selectedProduct,
+        ...this.adminForm.value,
+        price: Number(this.adminForm.value.price) // Convertir el precio a número
+      };
       this.adminService.editProduct(updatedProduct).subscribe(
         () => {
           console.log('Producto actualizado');
@@ -77,6 +83,7 @@ export class ProductsComponent implements OnInit {
       );
     }
   }
+  
   
 
   closeModal(): void {

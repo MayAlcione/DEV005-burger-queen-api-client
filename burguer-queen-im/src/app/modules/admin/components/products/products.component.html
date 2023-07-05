@@ -16,8 +16,12 @@
       <p>Data de entrada: {{ product.dateEntry }}</p>
  
     <div class="btn-container">
-        <button class="btn-edit" (click)="openEditModal(product)">Editar</button>
-        <button class="btn-eliminate" (click)="eliminate(product)">Eliminar</button>
+        <button class="btn-edit" (click)="openEditModal(product)">
+          <span class="material-symbols-outlined">edit_note</span>
+        </button>
+        <button class="btn-eliminate" (click)="eliminate(product)">
+          <span class="material-symbols-outlined">delete</span>
+        </button>
       </div>
     </div>
   </div>
