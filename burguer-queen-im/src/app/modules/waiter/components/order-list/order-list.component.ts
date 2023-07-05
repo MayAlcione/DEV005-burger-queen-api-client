@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CreateOrder, OneOrder } from 'src/app/shared/interfaces/createOrder';
 import { SendOrderService } from 'src/app/service/send-order.service';
 
@@ -7,9 +7,9 @@ import { SendOrderService } from 'src/app/service/send-order.service';
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.css']
 })
-export class OrderListComponent implements OnChanges {
+export class OrderListComponent {
 
-  totalToPay:number = 0;
+  @Input('totalPrice') totalToPay:number = 0;
   nameUserValue:string = '';
   tableUserValue:string = '';
   totalSendingOrders:Array<CreateOrder> = []
@@ -51,16 +51,6 @@ export class OrderListComponent implements OnChanges {
     this.totalProductsInOrder.splice(this.totalProductsInOrder.findIndex(elem => elem.product.id === idProduct), 1)
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['totalProductsInOrder']) {
-      this.totalToPay = 0;
-      this.totalProductsInOrder.forEach(elem => {
-        this.totalToPay += (elem.product.price*elem.qty)
-      })
-    }
-  }
-
-
   sendingOrder() {
     const user = Number(localStorage.getItem('User'))
 
@@ -69,7 +59,8 @@ export class OrderListComponent implements OnChanges {
       client: `${this.nameUserValue} - ${this.tableUserValue}`,
       products: this.totalProductsInOrder,
       status:'pending',
-      dateEntry: `${new Date()}`
+      dateEntry: new Date(),
+      dateProcessed: ''
     };
     this.sendOrderService.sendOrder(dataOrder).subscribe({
       next: (data) => {

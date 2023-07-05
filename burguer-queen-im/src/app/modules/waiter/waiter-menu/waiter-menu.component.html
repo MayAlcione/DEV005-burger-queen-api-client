@@ -11,4 +11,4 @@
 <app-products-menu [showBreakfastWithClick]=statusShowBreakfast [showLunchWithClick]=statusShowLunch
   (sendingOrders)="onSendingOrders($event)"
 ></app-products-menu>
-<app-order-list [total]="arrayProductInit"></app-order-list>
+<app-order-list [total]="arrayProductInit" [totalPrice]="totalPriceProducts"></app-order-list>

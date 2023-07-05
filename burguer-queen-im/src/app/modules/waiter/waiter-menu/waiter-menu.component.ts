@@ -9,7 +9,7 @@ import { OneOrder } from 'src/app/shared/interfaces/createOrder';
 export class WaiterMenuComponent {
 
   arrayProductInit:Array<OneOrder>;
-  TotalarrayProductInit:Array<OneOrder>;
+  totalPriceProducts:number;
   //Variables declaradas para cambiar el valor boolean del ngIf de su hijo(mostrar u ocultar)
   statusShowBreakfast:boolean;
   statusShowLunch:boolean;
@@ -19,7 +19,7 @@ export class WaiterMenuComponent {
     this.statusShowBreakfast=true;
     this.statusShowLunch=false;
     this.arrayProductInit = [];
-    this.TotalarrayProductInit = [];
+    this.totalPriceProducts = 0;
   }
   //Función que conecta el valor del ngIf en el renderizado de los productos con el evento click de Desayuno/Almuerzo
   onClickForShowBreakfast($event:boolean) {
@@ -43,7 +43,9 @@ export class WaiterMenuComponent {
         }
       })
     }
+    this.totalPriceProducts = 0;
+    this.arrayProductInit.forEach(elem => {
+      this.totalPriceProducts += (elem.product.price*elem.qty)
+    })
   }
-
-
 }
