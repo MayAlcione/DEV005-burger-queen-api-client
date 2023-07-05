@@ -5,15 +5,15 @@
     <div *ngFor="let product of products" class="product-post">
       <p>ID: {{ product.id }}</p>
       <hr>
-      <p>Name: {{ product.name }}</p>
+      <p>Nombre: {{ product.name }}</p>
       <hr>
-      <p>Price: {{ product.price }}</p>
+      <p>Precio: {{ product.price }}</p>
       <hr>
-      <p>Image: {{ product.image }}</p>
+      <p>Imagen: {{ product.image }}</p>
       <hr>
-      <p>Type: {{ product.type }}</p>
+      <p>Tipo: {{ product.type }}</p>
       <hr>
-      <p>DateEntry: {{ product.dateEntry }}</p>
+      <p>Data de entrada: {{ product.dateEntry }}</p>
  
     <div class="btn-container">
         <button class="btn-edit" (click)="openEditModal(product)">Editar</button>
