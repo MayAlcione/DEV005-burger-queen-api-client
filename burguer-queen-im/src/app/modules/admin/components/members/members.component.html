@@ -5,14 +5,16 @@
     <p>Correo: {{ user.email }}</p>
     <hr>
     <p>Rol: {{ user.role }}</p>
-    
+
     <div class="btn-container">
-      
-      <button class="btn-edit" (click)="openEditModal(user)">Editar
-     <!-- <img src="./src/assets/edit.png" alt="Editar" /> -->
+
+      <button class="btn-edit" (click)="openEditModal(user)">
+        <span class="material-symbols-outlined">edit_note</span>
       </button>
-     
-      <button class="btn-eliminate" (click)="deleteUser(user)">Eliminar</button>
+
+      <button class="btn-eliminate" (click)="deleteUser(user)">
+        <span class="material-symbols-outlined">delete</span>
+      </button>
     </div>
   </div>
 </div>
