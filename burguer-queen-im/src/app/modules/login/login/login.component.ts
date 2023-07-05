@@ -48,6 +48,10 @@ showErrPassword:boolean=false;
           //Navegación a las vistas según la credencial
           if(data.user.role === 'Administrador'){
             this.router.navigate(['/admin'])
+          }else if(data.user.role === 'Mesero' || data.user.role === 'Mesera'){
+            this.router.navigate(['/waiter'])
+          }else if(data.user.role === 'Cocinero' || data.user.role === 'Cocinera'){
+            this.router.navigate(['/chef'])
           }
         },
         error: (err) => {
