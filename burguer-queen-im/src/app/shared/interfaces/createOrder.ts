@@ -5,7 +5,7 @@ export interface CreateOrder {
   client:string,
   products:Array<OneOrder>,
   status:string,
-  dateEntry:string
+  dateEntry:any
 }
 
 export interface OneOrder {

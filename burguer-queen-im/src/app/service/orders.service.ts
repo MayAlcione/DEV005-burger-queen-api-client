@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CreateOrder } from '../shared/interfaces/createOrder';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SendOrderService {
+export class OrdersService {
+
   private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
-  sendOrder(order:CreateOrder): Observable<any>{
+  getOrders(): Observable<any>{
     const url = `${this.apiUrl}/orders`;
     const token = localStorage.getItem('Token');
 
@@ -19,6 +19,6 @@ export class SendOrderService {
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.post<CreateOrder>(url, order, { headers });
+    return this.http.get<any>(url, { headers });
   }
 }
