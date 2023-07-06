@@ -10,7 +10,9 @@ export class CookBoxComponent implements OnInit{
 
   orders:any;
 
-  constructor(private orderService: OrdersService) {}
+  constructor(private orderService: OrdersService) {
+
+  }
 
   ngOnInit() {
     this.getOrdersToCook();
@@ -20,12 +22,27 @@ export class CookBoxComponent implements OnInit{
     this.orderService.getOrders().subscribe({
       next: (data) => {
         this.orders = data
-        console.log(data);
-
       },
       error: (err) => {
         console.log(err);
       }
     })
+  }
+
+  onCheckboxChange(order:any) {
+    const statusOrder = order.status === 'pending' ? order.status = 'delivered' : order.status = 'pending'
+
+    this.orderService.changeStatus(order.id, statusOrder).subscribe({
+      next: (data) => {
+        console.log(data);
+
+      },
+      error: (err) => {
+        console.log(err);
+
+      }
+    })
+
+
   }
 }

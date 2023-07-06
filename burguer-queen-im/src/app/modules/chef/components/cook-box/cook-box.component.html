@@ -5,7 +5,7 @@
         <span>{{item.status === 'pending' ? 'Pendiente ⏱️' : 'Listo 🍽️'}} {{ item.dateEntry| date: 'shortTime'}}</span>
         <div class="nameUserOrderForCook">
           <span>{{item.client}}</span>
-          <input type="checkbox">
+          <input type="checkbox" (change)="onCheckboxChange(item)">
         </div>
       </div>
       <div class="listOrderBoxForCook">
@@ -16,7 +16,7 @@
       </div>
     </div>
   </ng-container>
-  <div class="oneOrderForCook cookedOrder">
+  <!-- <div class="oneOrderForCook cookedOrder">
     <div class="headerCookBox cookedOrderHeader">
       <span>Listo 🍽️ 10 minutos</span>
       <div class="nameUserOrderForCook">
@@ -38,6 +38,6 @@
         <span class="foodForCook">JUGO DE FRUTAS</span>
       </div>
     </div>
-  </div>
+  </div> -->
 </section>
 

@@ -5,14 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class OrdersService {
+export class GetProductsService {
 
   private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
-  getOrders(): Observable<any>{
-    const url = `${this.apiUrl}/orders`;
+  getAllProducts(): Observable<any>{
+    const url = `${this.apiUrl}/products`;
     const token = localStorage.getItem('Token');
 
     const headers = new HttpHeaders({
@@ -20,16 +20,5 @@ export class OrdersService {
     });
 
     return this.http.get<any>(url, { headers });
-  }
-
-  changeStatus(id:any, status:string): Observable<any>{
-    const url = `${this.apiUrl}/orders/${id}`;
-    const token = localStorage.getItem('Token');
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-
-    return this.http.patch<any>(url, { status: status }, { headers });
   }
 }
