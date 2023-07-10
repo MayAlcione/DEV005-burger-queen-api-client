@@ -65,9 +65,9 @@ select option{
 }
 .ngBoxOrder{
   height: 220px;
-  overflow-y: auto;
   padding-right: 10px;
   padding-left: 10px;
+  overflow-y: scroll !important;
 }
 .cleanOneOrder{
   font-size: 40px;
