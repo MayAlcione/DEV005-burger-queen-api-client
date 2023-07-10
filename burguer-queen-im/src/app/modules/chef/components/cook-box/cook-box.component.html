@@ -2,10 +2,12 @@
   <ng-container *ngFor="let item of orders; let i=index">
     <div class="oneOrderForCook" [ngClass]="item.status === 'pending' ? 'orderListForCook' : 'cookedOrder'">
       <div class="headerCookBox" [ngClass]="item.status === 'pending' ? 'orderListForCookHeader' : 'cookedOrderHeader'">
-        <span>{{item.status === 'pending' ? 'Pendiente ⏱️' : 'Listo 🍽️'}} {{ item.dateEntry| date: 'shortTime'}}</span>
+        <span>{{item.status === 'pending' ? 'Pendiente ⏱️' : 'Listo 🍽️'}}
+          {{item.status === 'pending' ? (item.dateEntry|date:'shortTime') : timechef(item.dateEntry, item.dateProcessed)}}
+        </span>
         <div class="nameUserOrderForCook">
           <span>{{item.client}}</span>
-          <input type="checkbox" (change)="onCheckboxChange(item)">
+          <input type="checkbox" (change)="onCheckboxChange(item)" [checked]="item.status !== 'pending'">
         </div>
       </div>
       <div class="listOrderBoxForCook">
@@ -16,28 +18,5 @@
       </div>
     </div>
   </ng-container>
-  <!-- <div class="oneOrderForCook cookedOrder">
-    <div class="headerCookBox cookedOrderHeader">
-      <span>Listo 🍽️ 10 minutos</span>
-      <div class="nameUserOrderForCook">
-        <span>Anibal - mesa 2</span>
-        <input class="noCheck" type="checkbox" checked="checked">
-      </div>
-    </div>
-    <div class="listOrderBoxForCook">
-      <div class="oneOrderCook">
-        <span class="amountCook"> 2 </span>
-        <span class="foodForCook"> SANDIWCH DE JAMÓN Y QUESO </span>
-      </div>
-      <div class="oneOrderCook">
-        <span class="amountCook"> 2 </span>
-        <span class="foodForCook">AROS DE CEBOLLA</span>
-      </div>
-      <div class="oneOrderCook">
-        <span class="amountCook"> 8 </span>
-        <span class="foodForCook">JUGO DE FRUTAS</span>
-      </div>
-    </div>
-  </div> -->
 </section>
 

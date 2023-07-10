@@ -1,46 +1,21 @@
 <section class="allOrders">
-  <div class="oneOrder orderList">
-    <div class="headerOrderBox orderListHeader">
-      <span>Listo 🍽️ 10 minutos</span>
-      <div class="nameUserOrder">
-        <span>María - mesa 1</span>
-        <input type="checkbox">
+  <ng-container *ngFor="let order of orders; let i=index">
+    <div class="oneOrder" [ngClass]="order.status === 'pending' ? 'orderPending' : 'orderList'">
+      <div class="headerOrderBox" [ngClass]="order.status === 'pending' ? 'orderPendingHeader' : 'orderListHeader'">
+        <span>{{order.status === 'pending' ? 'Pendiente ⏱️' : 'Listo 🍽️'}} {{ order.dateEntry| date: 'shortTime'}}</span>
+        <div class="nameUserOrder">
+          <span>{{order.client}}</span>
+          <input type="checkbox">
+        </div>
+      </div>
+      <div class="listOrderBox">
+        <div class="oneListOrder" *ngFor="let product of order.products; let i=index">
+          <span class="amountOrder">{{ product.qty }}</span>
+          <span class="foodOrder"> {{ product.product.name.toUpperCase() }}</span>
+        </div>
       </div>
     </div>
-    <div class="listOrderBox">
-      <div class="oneListOrder">
-        <span class="amountOrder"> 2 </span>
-        <span class="foodOrder"> SANDIWCH DE JAMÓN Y QUESO </span>
-      </div>
-      <div class="oneListOrder">
-        <span class="amountOrder"> 20 </span>
-        <span class="foodOrder">HAMBURGUESA DOBLE</span>
-      </div>
-      <div class="oneListOrder">
-        <span class="amountOrder"> 8 </span>
-        <span class="foodOrder">JUGO DE FRUTAS</span>
-      </div>
-    </div>
-  </div>
-  <div class="oneOrder orderPending">
-    <div class="headerOrderBox orderPendingHeader">
-      <span>Pendiente ⏱️ 10 minutos</span>
-      <div class="nameUserOrder">
-        <span>Mario - mesa 4</span>
-        <input class="noCheck" type="checkbox">
-      </div>
-    </div>
-    <div class="listOrderBox">
-      <div class="oneListOrder">
-        <span class="amountOrder"> 2 </span>
-        <span class="foodOrder"> SANDIWCH DE JAMÓN Y QUESO </span>
-      </div>
-      <div class="oneListOrder">
-        <span class="amountOrder"> 20 </span>
-        <span class="foodOrder">HAMBURGUESA DOBLE</span>
-      </div>
-    </div>
-  </div>
+  </ng-container>
   <div class="oneOrder orderDelivered">
     <div class="headerOrderBox orderDeliveredHeader">
       <span>Listo 🍽️ 10 minutos</span>

@@ -43,7 +43,7 @@ describe('LoginComponent', () => {
     password.setValue('te')
     expect(password.invalid).toBeTrue();
   })
-  fit('Debería arrojar un error si el email no está en el sistema', fakeAsync(() => {
+  it('Debería arrojar un error si el email no está en el sistema', fakeAsync(() => {
     const mockResult = {
       error: 'User not found',
     }
