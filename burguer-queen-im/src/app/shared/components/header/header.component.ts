@@ -8,4 +8,10 @@ import { Router }  from "@angular/router";
 })
 export class HeaderComponent {
   constructor(public router: Router){}
+
+  logOut() {
+    localStorage.removeItem('Token')
+    localStorage.removeItem('User')
+    localStorage.removeItem('Role')
+  }
 }
