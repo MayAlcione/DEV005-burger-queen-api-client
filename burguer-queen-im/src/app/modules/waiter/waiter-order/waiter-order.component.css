@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
+
+ul{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  list-style: none;
+  margin-left: -25px;
+  margin-bottom: 25px;
+}
+li{
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 52px;
+  color: #9E9E9E;
+}
+.listActive{
+  color: #DCB33A;
+}

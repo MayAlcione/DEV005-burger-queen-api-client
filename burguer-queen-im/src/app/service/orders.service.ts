@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +25,7 @@ export class OrdersService {
     });
 
     return this.http.get<any>(url, { headers })
-    /* .pipe(
-      tap(() => {
-        this.refresh.next();
-      })
-    ); */
+
   }
 
   changeStatus(id:any, status:string): Observable<any>{
@@ -41,7 +36,18 @@ export class OrdersService {
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.patch<any>(url, { status: status, dateProcessed: new Date() }, { headers })
+    return this.http.patch<any>(url, { status: status, dateProcessed: new Date(), served:false }, { headers })
+  }
+
+  changeServed(id:any, served:boolean): Observable<any>{
+    const url = `${this.apiUrl}/orders/${id}`;
+    const token = localStorage.getItem('Token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.patch<any>(url, { served:served }, { headers })
   }
 
   emitRefreshEvent(): void {
