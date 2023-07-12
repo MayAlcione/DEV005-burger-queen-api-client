@@ -1,34 +1,34 @@
 <div class="container">
     <h2>Lista de productos</h2>
     <button class="btn-add" (click)="openModal()">+</button>
-  </div>     
+  </div>
   <div class="modal" *ngIf="showModal">
     <div class="modal-content">
       <div class="form-box">
         <form [formGroup]="adminForm" (ngSubmit)="getProduct()">
          <!--<span class="close" (click)="closeModal()">&times;</span>-->
           <p>Producto nuevo</p>
-  
+
           <label for="name">Producto</label>
           <input type="text" id="name" placeholder="nombre del producto" formControlName="name">
           <br>
-  
+
           <label for="price">Precio</label>
           <input type="text" id="price" placeholder="$xxx" formControlName="price">
           <br>
-  
+
           <label for="image">Imagen</label>
           <input type="text" id="image" placeholder="https://ejemplo.png" formControlName="image">
           <br>
 
           <p>Tipo</p>
           <div class="radio-container">
-            
-              <input type="radio" id="desayuno" formControlName="selectedType" value="desayuno">
+
+              <input type="radio" id="desayuno" formControlName="type" value="desayuno">
               <label for="desayuno"> Desayuno
             </label>
-          
-              <input type="radio" id="almuerzo" formControlName="selectedType" value="almuerzo">
+
+              <input type="radio" id="almuerzo" formControlName="type" value="almuerzo">
               <label for="almuerzo">Almuerzo
             </label>
           </div>
@@ -40,5 +40,5 @@
     </div>
   </div>
   <div class="page-overlay" *ngIf="showModal"></div>
-  
-  
+
+
