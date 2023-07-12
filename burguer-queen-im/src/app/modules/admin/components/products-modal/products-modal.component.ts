@@ -15,7 +15,7 @@ export class ProductsModalComponent implements OnInit {
     price: ['', Validators.required],
     image: ['', Validators.required],
     typeControl: new FormControl(), // FormControl para el radio button
-    selectedType: ''
+    type: ''
   });
 
   products: Product[] = [];
@@ -29,7 +29,7 @@ export class ProductsModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminForm.get('typeControl')?.valueChanges.subscribe(value => {
-      this.adminForm.patchValue({ selectedType: value });
+      this.adminForm.patchValue({ type: value });
     });
   }
 
@@ -46,7 +46,7 @@ export class ProductsModalComponent implements OnInit {
       const name = this.adminForm.value.name as string;
       const priceValue = this.adminForm.value.price;
       const image = this.adminForm.value.image as string;
-      const type = this.adminForm.value.selectedType as string;
+      const type = this.adminForm.value.type as string;
 
       const price = parseInt(priceValue || '0', 10);
 
