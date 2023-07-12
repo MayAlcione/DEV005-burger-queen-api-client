@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from 'src/app/shared/interfaces/product';
 import { AdminService } from 'src/app/service/admin.service';
@@ -14,7 +14,8 @@ export class ProductsModalComponent implements OnInit {
     name: ['', Validators.required],
     price: ['', Validators.required],
     image: ['', Validators.required],
-    type: ['', Validators.required]
+    typeControl: new FormControl(), // FormControl para el radio button
+    selectedType: ''
   });
 
   products: Product[] = [];
@@ -26,7 +27,11 @@ export class ProductsModalComponent implements OnInit {
     private adminService: AdminService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.adminForm.get('typeControl')?.valueChanges.subscribe(value => {
+      this.adminForm.patchValue({ selectedType: value });
+    });
+  }
 
   openModal() {
     this.showModal = true;
@@ -41,10 +46,10 @@ export class ProductsModalComponent implements OnInit {
       const name = this.adminForm.value.name as string;
       const priceValue = this.adminForm.value.price;
       const image = this.adminForm.value.image as string;
-      const type = this.adminForm.value.type as string;
+      const type = this.adminForm.value.selectedType as string;
 
       const price = parseInt(priceValue || '0', 10);
-     
+
       const currentDate = new Date();
       const year = currentDate.getFullYear();
       const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // El mes se indexa desde 0, por lo que se agrega 1
@@ -70,35 +75,33 @@ export class ProductsModalComponent implements OnInit {
 
         // Realizar la solicitud POST al backend con los encabezados
         this.http.post('http://localhost:8080/products', newProduct, { headers }).subscribe(
-         (response: any) => {
-           const createdProduct: Product = {
-             id: response.id,
-             name: response.name,
-             price: response.price,
-             image: response.image,
-             type: response.type,
-             dateEntry: response.dateEntry,
-           };
-           this.products.push(createdProduct);
-           this.adminForm.reset();
-           this.closeModal();
-           this.adminService.emitRefreshEvent(); // Emitir el evento de actualización
-         },
-         (error: any) => {
-           console.error('Error al crear el producto:', error);
-         }
-       );
+          (response: any) => {
+            const createdProduct: Product = {
+              id: response.id,
+              name: response.name,
+              price: response.price,
+              image: response.image,
+              type: response.type,
+              dateEntry: response.dateEntry,
+            };
+            this.products.push(createdProduct);
+            this.adminForm.reset();
+            this.closeModal();
+            this.adminService.emitRefreshEvent(); // Emitir el evento de actualización
+          },
+          (error: any) => {
+            console.error('Error al crear el producto:', error);
+          }
+        );
 
         this.http.get<Product[]>('http://localhost:8080/products', { headers }).subscribe(
           (products: Product[]) => {
             this.products = products;
           },
-        
           (error: any) => {
             console.error('Error al obtener productos:', error);
           }
         );
-        
       } else {
         console.error('Token de autenticación no encontrado');
       }

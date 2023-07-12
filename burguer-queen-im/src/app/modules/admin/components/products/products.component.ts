@@ -59,18 +59,24 @@ export class ProductsComponent implements OnInit {
     this.selectedProduct = product;
     this.adminForm.patchValue({
       ...product,
-     
     });
+  
+    const selectedType = this.adminForm.get('type')?.value;
+   
     this.showModal = true;
   }
-  
+ 
   edit(): void {
     if (this.selectedProduct) {
+      const selectedType = this.adminForm.get('type')?.value; 
+  
       const updatedProduct = {
         ...this.selectedProduct,
         ...this.adminForm.value,
-        price: Number(this.adminForm.value.price) // Convertir el precio a número
+        type: selectedType, 
+        price: Number(this.adminForm.value.price)
       };
+  
       this.adminService.editProduct(updatedProduct).subscribe(
         () => {
           console.log('Producto actualizado');
@@ -84,8 +90,6 @@ export class ProductsComponent implements OnInit {
     }
   }
   
-  
-
   closeModal(): void {
     this.selectedProduct = null;
     this.adminForm.reset();
