@@ -107,3 +107,14 @@ select option{
   padding-left: 30px;
   margin-top: 5px;
 }
+.waiter{
+  width: 150px;
+  margin-inline: 30px;
+}
+.messageWaiter{
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 23px;
+}

@@ -44,6 +44,7 @@ showErrPassword:boolean=false;
           //localStorage
             localStorage.setItem('Token', data.accessToken)
             localStorage.setItem('User', data.user.id)
+            localStorage.setItem('Role', data.user.role)
             console.log(data.accessToken);
           //Navegación a las vistas según la credencial
           if(data.user.role === 'Administrador'){

@@ -13,6 +13,7 @@ export class OrderListComponent {
   nameUserValue:string = '';
   tableUserValue:string = '';
   totalSendingOrders:Array<CreateOrder> = []
+  showMessage:boolean;
 
   @Input('total') totalProductsInOrder:Array<OneOrder> = [];
 
@@ -31,6 +32,7 @@ export class OrderListComponent {
   }
 
   constructor(private sendOrderService: SendOrderService,) {
+    this.showMessage = false
   }
 
   deleteAll() {
@@ -65,12 +67,21 @@ export class OrderListComponent {
     this.sendOrderService.sendOrder(dataOrder).subscribe({
       next: (data) => {
         this.totalSendingOrders.push(data)
-        console.log(this.totalSendingOrders);
       },
       error: (error) => {
         console.log(error);
       },
     });
+
+    this.deleteAll()
+    this.nameUserValue = '';
+    this.tableUserValue = '';
+
+    this.showMessage = true;
+
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 2000);
   }
 
 }
