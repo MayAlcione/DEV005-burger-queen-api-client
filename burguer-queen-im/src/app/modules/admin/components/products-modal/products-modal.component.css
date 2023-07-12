@@ -40,7 +40,7 @@
   
   .modal {
     position: fixed;
-    top: 45%;
+    top: 35%;
     left: 45%;
     transform: translate(-50%, -50%);
     z-index: 9999;
@@ -75,14 +75,14 @@
   
   .form-box input {
     display: flex;
-    width: 400px;
+    width: 420px;
     background-color: #f4f4f4;
     padding: 0% 20%;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 0px;
     margin-top: 0px;
-    border-bottom: 2px solid #7f7e7e;
+   /* border-bottom: 2px solid #7f7e7e;*/
     border-right: none;
     border-left: none;
     border-top: none;
@@ -97,8 +97,7 @@
   
   #name::placeholder, 
   #price::placeholder,
-  #image::placeholder,
-  #type {
+  #image::placeholder {
     background-color: #f4f4f4;
     font-size: 20px;
     font-family: 'IBM Plex Sans Condensed', sans-serif;
@@ -119,4 +118,39 @@
   .form-box button:hover {
     background-color: #f4f4f4;
   }
+  
+  .radio-container input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    
+  }
+  
+  .radio-container label {
+    display: inline-block;
+    padding-left: 40px;
+    
+  }
+  
+  .radio-container input[type="radio"]::before {
+    display: inline-block;
+    content: '';
+    width: 25px;
+    height: 25px;
+    border-radius: 30%;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    margin-right: 10px;
+    transform: translate(-50%, -50%);
+    background-color: #7f7e7e; 
+  }
+  
+  .radio-container input[type="radio"]:checked::before {
+    background-color: #DCB33A;
+  }
+  
+  
+  
   

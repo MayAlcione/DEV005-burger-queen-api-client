@@ -21,8 +21,17 @@
           <input type="text" id="image" placeholder="https://ejemplo.png" formControlName="image">
           <br>
 
-          <label for="type">Tipo</label>
-          <input type="text" id="type" placeholder="Desayuno o Almuerzo" formControlName="type">
+          <p>Tipo</p>
+          <div class="radio-container">
+            
+              <input type="radio" id="desayuno" formControlName="selectedType" value="desayuno">
+              <label for="desayuno"> Desayuno
+            </label>
+          
+              <input type="radio" id="almuerzo" formControlName="selectedType" value="almuerzo">
+              <label for="almuerzo">Almuerzo
+            </label>
+          </div>
           <br>
           <button type="submit">Agregar</button>
           <button type="button" (click)="closeModal()">Cancelar</button>
