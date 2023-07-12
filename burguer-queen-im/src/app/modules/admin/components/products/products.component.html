@@ -46,8 +46,14 @@
           <input type="text" id="image" formControlName="image" [value]="selectedProduct?.image">
           <br>
 
-          <label for="type">Tipo</label>
-          <input type="type" id="type" formControlName="type">
+          <p>Tipo</p>
+          <div class="radio-container">
+            <input type="radio" id="desayuno" formControlName="type" value="Desayuno">
+            <label for="desayuno">Desayuno</label>
+          
+            <input type="radio" id="almuerzo" formControlName="type" value="Almuerzo">
+            <label for="almuerzo">Almuerzo</label>
+          </div>
           <br>
   
           <button type="submit">Editar</button>
