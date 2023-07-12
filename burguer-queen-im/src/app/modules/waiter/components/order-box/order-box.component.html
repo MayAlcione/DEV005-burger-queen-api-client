@@ -1,11 +1,13 @@
 <section class="allOrders">
   <ng-container *ngFor="let order of orders; let i=index">
-    <div class="oneOrder" [ngClass]="order.status === 'pending' ? 'orderPending' : 'orderList'">
-      <div class="headerOrderBox" [ngClass]="order.status === 'pending' ? 'orderPendingHeader' : 'orderListHeader'">
-        <span>{{order.status === 'pending' ? 'Pendiente ⏱️' : 'Listo 🍽️'}} {{ order.dateEntry| date: 'shortTime'}}</span>
+    <div class="oneOrder" [ngClass]="order.served===true ? 'orderDelivered' : (order.status === 'pending' ? 'orderPending' : 'orderList')">
+      <div class="headerOrderBox" [ngClass]="order.served===true ? 'orderDeliveredHeader' : (order.status === 'pending' ? 'orderPendingHeader' : 'orderListHeader')">
+        <span>{{order.served===true ? 'Servido 🤵' :(order.status === 'pending' ? 'Pendiente ⏱️' : 'Listo 🍽️')}}
+          {{order.status === 'pending' ? (order.dateEntry|date:'shortTime') : timechef(order.dateEntry, order.dateProcessed)}}
+        </span>
         <div class="nameUserOrder">
           <span>{{order.client}}</span>
-          <input type="checkbox">
+          <input type="checkbox" [disabled]="order.status === 'pending'" (change)="onCheckboxChangeWaiter(order)" [checked]="order.served === true">
         </div>
       </div>
       <div class="listOrderBox">
@@ -16,27 +18,4 @@
       </div>
     </div>
   </ng-container>
-  <div class="oneOrder orderDelivered">
-    <div class="headerOrderBox orderDeliveredHeader">
-      <span>Listo 🍽️ 10 minutos</span>
-      <div class="nameUserOrder">
-        <span>Anibal - mesa 2</span>
-        <input class="noCheck" type="checkbox" checked="checked">
-      </div>
-    </div>
-    <div class="listOrderBox">
-      <div class="oneListOrder">
-        <span class="amountOrder"> 2 </span>
-        <span class="foodOrder"> SANDIWCH DE JAMÓN Y QUESO </span>
-      </div>
-      <div class="oneListOrder">
-        <span class="amountOrder"> 2 </span>
-        <span class="foodOrder">AROS DE CEBOLLA</span>
-      </div>
-      <div class="oneListOrder">
-        <span class="amountOrder"> 8 </span>
-        <span class="foodOrder">JUGO DE FRUTAS</span>
-      </div>
-    </div>
-  </div>
 </section>

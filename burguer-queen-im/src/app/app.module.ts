@@ -6,6 +6,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AdminModule } from './modules/admin/admin.module';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -13,7 +14,8 @@ import { AdminModule } from './modules/admin/admin.module';
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

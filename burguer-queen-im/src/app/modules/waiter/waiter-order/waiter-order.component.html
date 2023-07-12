@@ -1,2 +1,16 @@
 <app-header-waiter></app-header-waiter>
-<app-order-box></app-order-box>
+<ul>
+  <li [ngClass]="{'listActive':statusList === true}"
+    (click)="onOrderList()">
+    Listo
+  </li>
+  <li [ngClass]="{'listActive':statusPending === true}"
+    (click)="onOrderPending()">
+    Pendiente
+  </li>
+  <li [ngClass]="{'listActive':statusServed === true}"
+    (click)="onOrderServed()">
+    Servido
+  </li>
+</ul>
+<app-order-box [statusPending]="statusPending" [statusServed]="statusServed" [statusList]="statusList"></app-order-box>
