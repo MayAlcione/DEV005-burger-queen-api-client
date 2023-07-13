@@ -7,7 +7,7 @@ import { CreateOrder } from '../shared/interfaces/createOrder';
   providedIn: 'root'
 })
 export class SendOrderService {
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'https://bqac-4.onrender.com';
 
   constructor(private http: HttpClient) { }
 

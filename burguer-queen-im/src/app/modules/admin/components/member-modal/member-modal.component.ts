@@ -50,7 +50,7 @@ export class MemberModalComponent implements OnInit {
 
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-        this.http.post('http://localhost:8080/users', newUser, { headers }).subscribe(
+        this.http.post('https://bqac-4.onrender.com/users', newUser, { headers }).subscribe(
           (response: any) => {
             const createdUser: User = {
               id: response.id,

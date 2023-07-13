@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class GetProductsService {
 
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'https://bqac-4.onrender.com';
 
   constructor(private http: HttpClient) { }
 

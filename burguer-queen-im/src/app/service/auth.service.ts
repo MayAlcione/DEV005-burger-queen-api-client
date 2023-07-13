@@ -14,7 +14,7 @@ export class AuthService {
       role: role
     };
 
-    this.http.post<any>('http://localhost:8080/users', credentials).subscribe(
+    this.http.post<any>('https://bqac-4.onrender.com/users', credentials).subscribe(
       response => {
         console.log('Usuario agregado:', response);
       },

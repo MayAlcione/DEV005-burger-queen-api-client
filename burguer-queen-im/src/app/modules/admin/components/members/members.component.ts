@@ -44,7 +44,7 @@ export class MembersComponent implements OnInit, OnDestroy {
   }
 
   getUsers() {
-    const url = 'http://localhost:8080/users';
+    const url = 'https://bqac-4.onrender.com/users';
     const token = localStorage.getItem('Token');
 
     const headers = new HttpHeaders({
@@ -61,7 +61,7 @@ export class MembersComponent implements OnInit, OnDestroy {
     );
   }
 
-  
+
   openEditModal(user: User): void {
     this.selectedUser = user;
     this.adminForm.patchValue(user);
@@ -90,13 +90,13 @@ export class MembersComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(user: User): void {
-    const url = `http://localhost:8080/users/${user.id}`;
+    const url = `https://bqac-4.onrender.com/users/${user.id}`;
     const token = localStorage.getItem('Token');
-  
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-  
+
     const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este usuario?');
     if (confirmDelete) {
       this.http.delete(url, { headers }).subscribe(
