@@ -74,7 +74,7 @@ export class ProductsModalComponent implements OnInit {
           .set('Authorization', `Bearer ${token}`); // Establecer el token en los encabezados
 
         // Realizar la solicitud POST al backend con los encabezados
-        this.http.post('http://localhost:8080/products', newProduct, { headers }).subscribe(
+        this.http.post('https://bqac-4.onrender.com/products', newProduct, { headers }).subscribe(
           (response: any) => {
             const createdProduct: Product = {
               id: response.id,
@@ -94,7 +94,7 @@ export class ProductsModalComponent implements OnInit {
           }
         );
 
-        this.http.get<Product[]>('http://localhost:8080/products', { headers }).subscribe(
+        this.http.get<Product[]>('https://bqac-4.onrender.com/products', { headers }).subscribe(
           (products: Product[]) => {
             this.products = products;
           },

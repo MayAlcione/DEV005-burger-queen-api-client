@@ -86,6 +86,7 @@ Esta es la información que tenemos de la clienta:
 
 ### Consideraciones generales
 
+* IMPORTANTE! Para probar la aplicación, debes tener abierto este enlace: [API MOCK](https://bqac-4.onrender.com/) y asegurarte de tener buena conexión de internet.
 * El diseño de la aplicación fue mejorado múltiples veces gracias a los test de usabilidad, culminando en la versión número tres, la cual fue construída con Angular 16 y Typescript.
 * Los colores base para el proyecto fueron: negro, dorado y tonos de gris.
 * La aplicación permite agregar, editar y eliminar personal o lista de productos del menú , el único usuario permitido para estas acciones, es el que tenga el rol de Administrador al loguearse a la aplicación.

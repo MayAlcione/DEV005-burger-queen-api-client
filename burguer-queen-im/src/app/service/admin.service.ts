@@ -8,7 +8,7 @@ import { User } from '../shared/interfaces/user';
   providedIn: 'root'
 })
 export class AdminService {
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'https://bqac-4.onrender.com';
   private refresh = new Subject<void>();
 
   constructor(private http: HttpClient) {}
@@ -64,7 +64,7 @@ export class AdminService {
 
     return this.http.get<Product[]>(url, { headers });
   }
-  
+
   editProduct(product: Product): Observable<any> {
     const url = `${this.apiUrl}/products/${product.id}`;
     const token = localStorage.getItem('Token');

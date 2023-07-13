@@ -15,6 +15,6 @@ export class LoginService {
 
   getAuth(body:{}): Observable<any>{
 
-    return this.http.post('http://localhost:8080/login', body)
+    return this.http.post('https://bqac-4.onrender.com/login', body)
   }
 }
