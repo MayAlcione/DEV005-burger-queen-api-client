@@ -1,0 +1,67 @@
+<app-header-admin></app-header-admin>
+<app-products-modal></app-products-modal>
+
+<div class="product-post-container">
+    <div *ngFor="let product of products" class="product-post">
+      <p>ID: {{ product.id }}</p>
+      <hr>
+      <p>Nombre: {{ product.name }}</p>
+      <hr>
+      <p>Precio: {{ product.price }}</p>
+      <hr>
+      <p>Imagen: {{ product.image }}</p>
+      <hr>
+      <p>Tipo: {{ product.type }}</p>
+      <hr>
+      <p>Data de entrada: {{ product.dateEntry }}</p>
+ 
+    <div class="btn-container">
+        <button class="btn-edit" (click)="openEditModal(product)">
+          <span class="material-symbols-outlined">edit_note</span>
+        </button>
+        <button class="btn-eliminate" (click)="eliminate(product)">
+          <span class="material-symbols-outlined">delete</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <div class="form-box">
+        <form [formGroup]="adminForm" (ngSubmit)="edit()">
+  
+          <p>Editar producto</p>
+          <br>
+  
+          <label for="name">Producto</label>
+          <input type="text" id="name" formControlName="name" [value]="selectedProduct?.name">
+          <br>
+  
+          <label for="price">Precio</label>
+          <input type="text" id="price" formControlName="price">
+          <br>
+  
+          <label for="image">Imagen</label>
+          <input type="text" id="image" formControlName="image" [value]="selectedProduct?.image">
+          <br>
+
+          <p>Tipo</p>
+          <div class="radio-container">
+            <input type="radio" id="desayuno" formControlName="type" value="Desayuno">
+            <label for="desayuno">Desayuno</label>
+          
+            <input type="radio" id="almuerzo" formControlName="type" value="Almuerzo">
+            <label for="almuerzo">Almuerzo</label>
+          </div>
+          <br>
+  
+          <button type="submit">Editar</button>
+          <button type="button" (click)="closeModal()">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="page-overlay" *ngIf="showModal"></div>
+  

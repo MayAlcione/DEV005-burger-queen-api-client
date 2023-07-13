@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Lista de personal</h2>
+  <button class="btn-add" (click)="openModal()">+</button>
+</div>
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <div class="form-box">
+      <form [formGroup]="adminForm" (ngSubmit)="getUser()">
+       <!-- <span class="close" (click)="closeModal()">&times;</span>-->
+        <p>Miembro nuevo del equipo</p>
+
+        <label for="email">Correo</label>
+        <input type="text" id="email" placeholder="ejemplo@ejemplo.com" formControlName="email">
+        <br>
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="ejemplo" formControlName="password">
+        <br>
+
+        <label for="role">Rol</label>
+        <input type="text" id="role" placeholder="ejemplo" formControlName="role">
+        <br>
+
+        <button type="submit">Agregar</button>
+        <button type="button" (click)="closeModal()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="page-overlay" *ngIf="showModal"></div>
+

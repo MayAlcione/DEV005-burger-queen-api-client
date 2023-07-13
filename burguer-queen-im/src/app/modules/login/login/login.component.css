@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
+#logoQueen {
+  width: 80%;
+  margin: 0 10% -5% 10%;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  margin: 0 20%;
+  font-size: 30px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  text-align: start;
+}
+form label{
+  color: #DCB33A;
+  font-weight: bolder;
+  font-size: 35px;
+  margin-top: -25px;
+  padding-left: 8px;
+}
+#formEmail, #formPassword {
+  height: 55px;
+  border-radius: 20px;
+  background: #E6E6E6;
+  padding: 6px 0 0 25px;
+  font-size: 30px;
+  margin-bottom: 80px;
+  position: relative;
+}
+#formEmail::placeholder, #formPassword::placeholder{
+  font-size: 30px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+.icon{
+  height: 55px;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  background-color: transparent;
+  position: absolute;
+  right: 21%;
+  margin-top: 4%;
+  padding-top: 3px;
+  padding-right: 15px;
+}
+.material-symbols-outlined{
+  color: #be9b32;
+  font-size: 40px;
+  font-weight: bold;
+}
+#buttonLogin{
+  background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
+  height: 70px;
+  border-radius: 20px;
+  font-size: 40px;
+  font-weight: bolder;
+  margin-top: 5px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  padding-bottom : 5px;
+}
+.disabledBtn::before, .disabledBtn::after{
+  content: '  🔒︎  ';
+}
+#fastFood{
+  width: 76%;
+  margin: 0 12%;
+  position: absolute;
+  top: 71%;
+}
+.messaggeError{
+  color: rgb(248, 37, 37);
+  position: absolute;
+  top:415px;
+  left: 22%;
+}
+.errorPassword{
+  top:582px;
+}

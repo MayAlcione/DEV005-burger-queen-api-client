@@ -1,0 +1,23 @@
+#logoQueenHeader{
+  width: 210px;
+  display: flex;
+  margin-top: -10px;
+}
+.logout{
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 25px;
+  top: 15px;
+}
+.logout img{
+  width: 60px;
+  height: 60px;
+}
+span{
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(270deg,#9A690C 0%, #F7D24D 30%, #9A690C 100%);
+  margin-top: -20px;
+}

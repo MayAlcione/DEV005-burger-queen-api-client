@@ -1,0 +1,190 @@
+.product-post-container {
+    margin-top: 60px;
+    margin-bottom: 90px;
+  }
+  
+  .product-post {
+    position: relative;
+    background-color: transparent;
+    border: 4px solid #c8c8c8;
+    border-radius: 20px;
+    padding: 5px;
+    width: 600px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 80px;
+  }
+  
+  .product-post p {
+    color: #c8c8c8;
+    font-size: 25px;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .btn-container {
+    position: absolute;
+    top: 50%;
+    right: -110px;
+    transform: translateY(-50%);
+  }
+  
+  
+.material-symbols-outlined {
+  font-size: 60px;
+}
+
+#name::placeholder, 
+#price::placeholder,
+#image::placeholder {
+  background-color: #f4f4f4;
+  font-size: 20px;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+  .btn-edit,
+  .btn-eliminate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 4px solid #c8c8c8;
+    border-radius: 15px;
+    width: 90px;
+    height: 90px;
+    font-size: 20px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-weight: bolder;
+    color: #c8c8c8;
+  }
+  
+  .container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 140px;
+    height: 10vh;
+    z-index: 1; 
+  }
+  
+  p {
+    color: #010101;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+ 
+  .form-box {
+    display: flex;
+    width: 600px;
+    background-color: #f4f4f4;
+    border: 4px solid #DCB33A;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 100px;
+    margin-top: -450px;
+  }
+  
+  .form-box label {
+    font-weight: bold;
+    color: #010101;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 25px;
+  }
+  
+  .form-box input {
+    display: flex;
+    width: 400px;
+    background-color: #f4f4f4;
+    padding: 0% 20%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+   /* border-bottom: 2px solid #7f7e7e;*/
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    color: #010101;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 25px;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  .form-box button {
+    background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 25px;
+    font-weight: bolder;
+  }
+  
+  .form-box button:hover {
+    background-color: #f4f4f4;
+  }
+  
+  .radio-container input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    
+  }
+  
+  .radio-container label {
+    display: inline-block;
+    padding-left: 40px;
+    
+  }
+  
+  .radio-container input[type="radio"]::before {
+    display: inline-block;
+    content: '';
+    width: 25px;
+    height: 25px;
+    border-radius: 30%;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    margin-right: 10px;
+    transform: translate(-50%, -50%);
+    background-color: #7f7e7e; 
+  }
+  
+  .radio-container input[type="radio"]:checked::before {
+    background-color: #DCB33A;
+  }
+
+ .page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Ajusta el último valor (0.5) para cambiar la opacidad */
+  z-index: 9998; /* Un nivel menos que el modal */
+}
+  
+  

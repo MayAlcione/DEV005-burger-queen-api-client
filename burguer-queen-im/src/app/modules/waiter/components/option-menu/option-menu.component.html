@@ -1,0 +1,11 @@
+<div class="navOptionMenu">
+  <!-- Clase activa por defecto al cargar la página -->
+  <a class="navOptionMenuInactive navOptionMenuActive"
+    (click)="breakfast()"
+    [ngClass]="statusBreakfast"
+    >Desayuno</a>
+  <a class="navOptionMenuInactive"
+    (click)="lunch()"
+    [ngClass]="statusLunch"
+    >Almuerzo y cena</a>
+</div>

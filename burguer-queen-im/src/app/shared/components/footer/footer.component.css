@@ -1,0 +1,13 @@
+footer{
+  background: linear-gradient(180deg, #F7D24D 0%, #9A690C 100%);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  left: 0px;
+  bottom: 0px;
+  padding-top: 20px;
+}

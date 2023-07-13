@@ -1,0 +1,21 @@
+<section class="allOrders">
+  <ng-container *ngFor="let order of orders; let i=index">
+    <div class="oneOrder" [ngClass]="order.served===true ? 'orderDelivered' : (order.status === 'pending' ? 'orderPending' : 'orderList')">
+      <div class="headerOrderBox" [ngClass]="order.served===true ? 'orderDeliveredHeader' : (order.status === 'pending' ? 'orderPendingHeader' : 'orderListHeader')">
+        <span>{{order.served===true ? 'Servido 🤵' :(order.status === 'pending' ? 'Pendiente ⏱️' : 'Listo 🍽️')}}
+          {{order.status === 'pending' ? (order.dateEntry|date:'shortTime') : timechef(order.dateEntry, order.dateProcessed)}}
+        </span>
+        <div class="nameUserOrder">
+          <span>{{order.client}}</span>
+          <input type="checkbox" [disabled]="order.status === 'pending'" (change)="onCheckboxChangeWaiter(order)" [checked]="order.served === true">
+        </div>
+      </div>
+      <div class="listOrderBox">
+        <div class="oneListOrder" *ngFor="let product of order.products; let i=index">
+          <span class="amountOrder">{{ product.qty }}</span>
+          <span class="foodOrder"> {{ product.product.name.toUpperCase() }}</span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>

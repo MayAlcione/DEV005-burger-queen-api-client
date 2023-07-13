@@ -1,0 +1,22 @@
+<section class="allOrdersCook">
+  <ng-container *ngFor="let item of orders; let i=index">
+    <div class="oneOrderForCook" [ngClass]="item.status === 'pending' ? 'orderListForCook' : 'cookedOrder'">
+      <div class="headerCookBox" [ngClass]="item.status === 'pending' ? 'orderListForCookHeader' : 'cookedOrderHeader'">
+        <span>{{item.status === 'pending' ? 'Pendiente ⏱️' : 'Listo 🍽️'}}
+          {{item.status === 'pending' ? (item.dateEntry|date:'shortTime') : timechef(item.dateEntry, item.dateProcessed)}}
+        </span>
+        <div class="nameUserOrderForCook">
+          <span>{{item.client}}</span>
+          <input type="checkbox" (change)="onCheckboxChange(item)" [checked]="item.status !== 'pending'">
+        </div>
+      </div>
+      <div class="listOrderBoxForCook">
+        <div class="oneOrderCook" *ngFor="let one of item.products; let i=index">
+          <span class="amountCook">{{ one.qty }}</span>
+          <span class="foodForCook"> {{ one.product.name.toUpperCase() }} </span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>
+

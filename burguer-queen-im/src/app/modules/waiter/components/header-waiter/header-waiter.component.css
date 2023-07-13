@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
+
+.navWaiter{
+  position: absolute;
+  width: 94px;
+  height: 52px;
+  right: 350px;
+  top: 18px;
+}
+.navWaiterInactive{
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 52px;
+  text-decoration:none;
+  color: #9E9E9E;
+  margin: 0 25px;
+}
+.navWaiterActive{
+  color: #DCB33A;
+}

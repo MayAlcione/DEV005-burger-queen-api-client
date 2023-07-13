@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
+
+.boxFood{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.unidFood{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 85%;
+  margin-bottom: 40px;
+}
+.imageFood{
+  width: 80px;
+  height: 80px;
+  flex: 1;
+  object-fit: contain;
+}
+.textFood{
+  color: #f4f4f4;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 30px;
+  flex: 300px;
+  margin-left: 20px;
+}
+.priceFood{
+  color: #f4f4f4;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 30px;
+  flex: 1;
+}
+.unidFood button{
+  color: #C49E2F;
+  font-size: 40px;
+  font-weight: bold;
+  flex: .6;
+  background: transparent;
+  border: 6px solid #C49E2F;
+  border-radius: 20px;
+  height: 70px;
+}

@@ -1,0 +1,12 @@
+<nav class="navChef">
+  <a class="navChefInactive"
+    [ngClass]="{'navChefActive':router.url !== '/chef/delivered'}"
+    [routerLink]="['/chef/pending']">
+    Pendiente
+  </a>
+  <a class="navChefInactive"
+    [ngClass]="{'navChefActive':router.url === '/chef/delivered'}"
+    [routerLink]="['/chef/delivered']">
+    Listo
+  </a>
+</nav>

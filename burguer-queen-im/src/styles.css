@@ -1,0 +1,6 @@
+body{
+  background-image: url(./assets/fondoMaderaNegra.jpg);
+  background-position: center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}

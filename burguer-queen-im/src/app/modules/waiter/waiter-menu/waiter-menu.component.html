@@ -1,0 +1,14 @@
+<app-header-waiter></app-header-waiter>
+<!-- clickForShowBreakfast/clickForShowLunch son los nombres de las funciones emitidas con Output -->
+<!-- que al ejecutarse como evento, ejecuta la función onClickForShowBreakfast que se creará en el componente padre -->
+<!-- $event es la respuesta de la funcion emitida y usada como argumento para acceder a la respuesta del componente hijo, en el padre -->
+<app-option-menu
+    (clickForShowBreakfast)="onClickForShowBreakfast($event)"
+    (clickForShowLunch)="onClickForShowLunch($event)"
+></app-option-menu>
+<!-- showBreakfastWithClick/showLunchWithClick variables traidas con Input a su etiqueta padre para reasignar sus valores -->
+<!-- statusShowBreakfast, variable que cambia el valor cuando se ejecutan las funciones de su componente hermano -->
+<app-products-menu [showBreakfastWithClick]=statusShowBreakfast [showLunchWithClick]=statusShowLunch
+  (sendingOrders)="onSendingOrders($event)"
+></app-products-menu>
+<app-order-list [total]="arrayProductInit" [totalPrice]="totalPriceProducts"></app-order-list>
