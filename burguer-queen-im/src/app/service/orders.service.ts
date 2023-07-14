@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
 export class OrdersService {
 
   private refresh = new Subject<void>()
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'https://bqac-4.onrender.com';
 
   constructor(private http: HttpClient) { }
 

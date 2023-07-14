@@ -39,7 +39,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    const url = 'http://localhost:8080/products';
+    const url = 'https://bqac-4.onrender.com/products';
     const token = localStorage.getItem('Token');
 
     const headers = new HttpHeaders({
@@ -60,23 +60,23 @@ export class ProductsComponent implements OnInit {
     this.adminForm.patchValue({
       ...product,
     });
-  
+
     const selectedType = this.adminForm.get('type')?.value;
-   
+
     this.showModal = true;
   }
- 
+
   edit(): void {
     if (this.selectedProduct) {
-      const selectedType = this.adminForm.get('type')?.value; 
-  
+      const selectedType = this.adminForm.get('type')?.value;
+
       const updatedProduct = {
         ...this.selectedProduct,
         ...this.adminForm.value,
-        type: selectedType, 
+        type: selectedType,
         price: Number(this.adminForm.value.price)
       };
-  
+
       this.adminService.editProduct(updatedProduct).subscribe(
         () => {
           console.log('Producto actualizado');
@@ -89,7 +89,7 @@ export class ProductsComponent implements OnInit {
       );
     }
   }
-  
+
   closeModal(): void {
     this.selectedProduct = null;
     this.adminForm.reset();
@@ -97,7 +97,7 @@ export class ProductsComponent implements OnInit {
   }
 
   eliminate(product: Product): void {
-    const url = `http://localhost:8080/products/${product.id}`;
+    const url = `https://bqac-4.onrender.com/products/${product.id}`;
     const token = localStorage.getItem('Token');
 
     const headers = new HttpHeaders({

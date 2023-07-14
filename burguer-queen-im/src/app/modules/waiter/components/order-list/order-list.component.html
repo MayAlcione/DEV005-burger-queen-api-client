@@ -23,6 +23,10 @@
       <span class="number numberPrice">$ {{item.product.price*item.qty}}</span>
       <span class="material-symbols-outlined cleanOneOrder" (click)="deleteOne(item.product.id)">delete</span>
     </div>
+    <div class="messageWaiter" *ngIf="showMessage">
+      <img class="waiter" src="../../../../../assets/mesera.png" alt="Mesera estilo cartoon">
+      Envío exitoso
+    </div>
   </div>
   <hr>
   <div class="boxOrderDown">
