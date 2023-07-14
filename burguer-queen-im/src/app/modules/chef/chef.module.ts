@@ -19,7 +19,7 @@ import { ChefDeliveredComponent } from './chef-delivered/chef-delivered.componen
   imports: [
     CommonModule,
     ChefRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class ChefModule { }

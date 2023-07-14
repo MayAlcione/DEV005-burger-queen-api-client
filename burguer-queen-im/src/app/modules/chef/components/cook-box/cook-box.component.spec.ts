@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
 
 import { CookBoxComponent } from './cook-box.component';
 
@@ -8,7 +9,8 @@ describe('CookBoxComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CookBoxComponent]
+      declarations: [CookBoxComponent],
+      imports: [HttpClientTestingModule ],
     });
     fixture = TestBed.createComponent(CookBoxComponent);
     component = fixture.componentInstance;

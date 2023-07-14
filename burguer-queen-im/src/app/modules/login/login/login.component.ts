@@ -34,18 +34,15 @@ showErrPassword:boolean=false;
 //Función que se activa al dar click al botón 'Iniciar sesión'
   saveAuth() {
   // Petición a la Api para Auth
-
     if(this.loginForm.valid){
-
       this.loginService.getAuth(this.loginForm.value)
       .subscribe({
         next: (data) => {
-
           //localStorage
             localStorage.setItem('Token', data.accessToken)
             localStorage.setItem('User', data.user.id)
             localStorage.setItem('Role', data.user.role)
-            console.log(data.accessToken);
+
           //Navegación a las vistas según la credencial
           if(data.user.role === 'Administrador'){
             this.router.navigate(['/admin'])
@@ -56,7 +53,6 @@ showErrPassword:boolean=false;
           }
         },
         error: (err) => {
-
           if(err.error==='Incorrect password'){
             this.messageErrorPassword='Contraseña incorrecta'
             this.showErrPassword=true;
@@ -64,8 +60,7 @@ showErrPassword:boolean=false;
             this.messageErrorEmail='Usuario no registrado';
             this.showErrEmail=true;
           }
-        },
-        complete: () => {console.log('Fin :)')}
+        }
       });
     }
   }
@@ -79,6 +74,4 @@ showErrPassword:boolean=false;
   toggleShow() {
     this.showPassword = !this.showPassword;
   }
-
-
 }

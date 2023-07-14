@@ -4,6 +4,7 @@ import { WaiterOrderComponent } from './waiter-order.component';
 import { HeaderWaiterComponent } from '../components/header-waiter/header-waiter.component';
 import { OrderBoxComponent } from '../components/order-box/order-box.component';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('WaiterOrderComponent', () => {
   let component: WaiterOrderComponent;
@@ -12,7 +13,7 @@ describe('WaiterOrderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [WaiterOrderComponent, HeaderWaiterComponent, OrderBoxComponent],
-      imports: [BrowserDynamicTestingModule, RouterTestingModule ]
+      imports: [BrowserDynamicTestingModule, RouterTestingModule, HttpClientTestingModule ]
     });
     fixture = TestBed.createComponent(WaiterOrderComponent);
     component = fixture.componentInstance;

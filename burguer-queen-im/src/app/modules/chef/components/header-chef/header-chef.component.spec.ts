@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderChefComponent } from './header-chef.component';
+import { ChefRoutingModule } from '../../chef-routing.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HeaderChefComponent', () => {
   let component: HeaderChefComponent;
@@ -8,7 +10,9 @@ describe('HeaderChefComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderChefComponent]
+      declarations: [HeaderChefComponent],
+      imports: [ChefRoutingModule, RouterTestingModule], //control+. import
+      providers:[]
     });
     fixture = TestBed.createComponent(HeaderChefComponent);
     component = fixture.componentInstance;

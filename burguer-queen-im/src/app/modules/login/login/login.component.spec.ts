@@ -5,13 +5,13 @@ import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { LoginService } from 'src/app/service/login.service'; //control+espacio: importa automatico
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let service: LoginService;
-  let LoginServiceSpy: {getAuth: jasmine.Spy}; //espía
-  LoginServiceSpy = jasmine.createSpyObj('LoginService', ['getAuth']); // jasmine espía a post
+  let LoginServiceSpy: {getAuth: jasmine.Spy} = jasmine.createSpyObj('LoginService', ['getAuth']); // jasmine espía a post
   let router: Router;
 
   beforeEach(() => {
@@ -44,48 +44,44 @@ describe('LoginComponent', () => {
     expect(password.invalid).toBeTrue();
   })
   it('Debería arrojar un error si el email no está en el sistema', fakeAsync(() => {
-    const mockResult = {
-      error: 'User not found',
-    }
     LoginServiceSpy.getAuth.and.callFake(() => {
-        return {
-          subscribe:
-            (params: { error: Function, next: Function }) => params.error({ error: "No internet because is raining" })
-        };
-      })
+      return {
+        subscribe:
+          (params: { error: Function, next: Function }) => params.error({ error: "No internet because is raining" })
+      };
+    })
     const formData = {
       "email": "test@test.com",
       "password": "testeando"
     };
     component.loginForm.setValue(formData);
     component.saveAuth();
-      // const btnLogin = fixture.debugElement.query(By.css('#buttonLogin'))
-      // btnLogin.nativeElement.click()
-      // component.loginForm.valid = true;
-      // fixture.detectChanges(); //detecta cambios
     tick(501);
     expect(component.messageErrorEmail).toBe('Usuario no registrado')
     expect(component.showErrEmail).toBe(true)
   })
   )
-  // it('Debería navegar a la vista admin si su rol es admin', fakeAsync(() => {
-  //   let email = component.loginForm.controls['email']
-  //   let password = component.loginForm.controls['password']
-  //   email.setValue('admin@admin.com'),
-  //   password.setValue('123456')
-  //   const mockResult = {
-  //     user:{
-  //       role: 'admin',
-  //     }
-  //   }
-  //   const request = httpMock.expectOne('http://localhost:8080/login')
-  //   expect( request.request.method ).toBe('POST');
-  //   request.flush( mockResult );
-  //   fixture.detectChanges();
-  //   //HttpClientSpy.post.and.returnValue(of(mockResult));
-  //   // const btnLogin = fixture.debugElement.query(By.css('#buttonLogin'))
-  //   // btnLogin.nativeElement.click()
-  //   // tick(501);
-  //   expect(router.navigate).toHaveBeenCalledWith(['/admin'])
-  // }))
+  it('Debería navegar a la vista admin si su rol es Administrador', fakeAsync(() => {
+    LoginServiceSpy.getAuth.and.returnValue(of({
+            "accessToken": 'EIGHJNMIKDSPLZÑ',
+            "user": {
+              "role": 'Administrador',
+              "id": 1,
+            }
+      }
+    ))
+    const formData = {
+      email: "admin@test.com",
+      password: "Soyadmin"
+    };
+    component.loginForm.setValue(formData);
+    component.saveAuth();
+    tick();
+    expect(router.navigate).toHaveBeenCalledWith(['/admin'])
+  }))
 });
+
+
+// Traer elemento del dom por ID
+// const btnLogin = fixture.debugElement.query(By.css('#buttonLogin'))
+// btnLogin.nativeElement.click()
